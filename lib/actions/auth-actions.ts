@@ -9,6 +9,8 @@ import { hash } from 'bcryptjs'
 import { headers } from 'next/headers'
 import ratelimit from '../ratelimit'
 import { redirect } from 'next/navigation'
+import { workflowClient } from '../workflow-client'
+import config from '../config'
 
 export const SignInWithCredentials = async (
   params: Pick<AuthCredentials, 'email' | 'password'>
@@ -37,7 +39,7 @@ export const SignInWithCredentials = async (
 }
 export const signUp = async (params: AuthCredentials) => {
   const { fullName, password, email } = params
-  
+
   const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1'
   const { success } = await ratelimit.limit(ip)
 
@@ -56,13 +58,22 @@ export const signUp = async (params: AuthCredentials) => {
   //hash the password
   const hashedPassword = await hash(password, 10)
 
-  //if the user does not exist add to db
+  //if the user does not exist then add to db
   try {
     await db.insert(users).values({
       fullName,
       email,
       password: hashedPassword,
     })
+
+    await workflowClient.trigger({
+      url: `${config.env.prodApiEndpoint}/api/workflow/onboarding`,
+      body: {
+        email,
+        fullName,
+      },
+    })
+
     await SignInWithCredentials({ email, password })
 
     return {
