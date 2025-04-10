@@ -38,8 +38,9 @@ export async function sendEmail({
 
   if (!response.ok) {
     const error = await response.text()
+    console.error('❌ EmailJS response error:', error)
     throw new Error(`EmailJS error: ${error}`)
   }
 
-  console.log(`✅ Email sent to ${email}`)
+ 
 }

@@ -41,9 +41,12 @@ const getUserState = async (email: string): Promise<UserState> => {
 
 export const { POST } = serve<InitialData>(async (context) => {
   const { email, fullName } = context.requestPayload
+    console.log('🔥 POST triggered for:', email)
 
   // Welcome Email
   await context.run('new-signup', async () => {
+      console.log('📩 Sending welcome email...')
+
     await sendEmail({
       email,
       subject: 'Welcome to the platform',
