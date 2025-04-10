@@ -1,4 +1,6 @@
 import { Client as WorkflowClient } from '@upstash/workflow'
+import { Client as QStashClient, resend } from '@upstash/qstash'
+
 import config from './config'
 
 export const workflowClient = new WorkflowClient({
@@ -6,7 +8,11 @@ export const workflowClient = new WorkflowClient({
   token: config.env.upstash.qstashToken,
 })
 
-export async function sendEmail({
+const qstashClient = new QStashClient({
+  token: config.env.upstash.qstashToken,
+})
+
+export const sendEmail = async ({
   email,
   subject,
   message,
@@ -14,33 +20,17 @@ export async function sendEmail({
   email: string
   subject: string
   message: string
-}) {
-  const payload = {
-    service_id: config.env.emailjs.service_id,
-    template_id: config.env.emailjs.template_id,
-    user_id: config.env.emailjs.publicKey,
-    //accessToken: config.env.emailjs.apiKey,
-
-    template_params: {
-      to_email: email,
+}) => {
+  await qstashClient.publishJSON({
+    api: {
+      name: 'email',
+      provider: resend({ token: config.env.resendToken }),
+    },
+    body: {
+      from: 'Book Library <library.baekmerve.website>',
+      to: [email],
       subject,
-      message,
+      html: message,
     },
-  }
-
-  const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
   })
-
-  if (!response.ok) {
-    const error = await response.text()
-    console.error('❌ EmailJS response error:', error)
-    throw new Error(`EmailJS error: ${error}`)
-  }
-
- 
 }

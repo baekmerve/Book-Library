@@ -52,6 +52,7 @@ export const { POST } = serve<InitialData>(async (context) => {
       subject: 'Welcome to the platform',
       message: `Welcome ${fullName}!`,
     })
+     console.log('✅ Sent welcome email')
   })
 
   // 2. Initial Waiting Period
