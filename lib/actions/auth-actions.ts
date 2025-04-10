@@ -3,7 +3,6 @@ import { db } from '@/database/drizzle'
 import { AuthCredentials } from './../types'
 import { users } from '@/database/schema'
 import { eq } from 'drizzle-orm'
-
 import { signIn } from '@/auth'
 import { hash } from 'bcryptjs'
 import { headers } from 'next/headers'
