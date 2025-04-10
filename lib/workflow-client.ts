@@ -18,8 +18,8 @@ export async function sendEmail({
   const payload = {
     service_id: config.env.emailjs.service_id,
     template_id: config.env.emailjs.template_id,
-    // user_id: config.env.emailjs.publicKey,
-    accessToken: config.env.emailjs.apiKey,
+    user_id: config.env.emailjs.publicKey,
+    //accessToken: config.env.emailjs.apiKey,
 
     template_params: {
       to_email: email,
