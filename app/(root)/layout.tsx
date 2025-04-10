@@ -22,13 +22,18 @@ const Layout = async ({ children }: { children: ReactNode }) => {
       .where(eq(users.id, session.user.id))
       .limit(1)
 
-    //if the user's last activity date is today then dont update it
-    if (user[0].lastActivityDate === new Date().toISOString().slice(0, 10))
-      return
+    // if user not found, do nothing
+    if (user.length === 0) return
 
+    // if the user's last activity date is today then don't update it
+    const lastActivity = user[0].lastActivityDate
+    const today = new Date().toISOString().slice(0, 10)
+    if (lastActivity === today) return
+
+    // update lastActivityDate
     await db
       .update(users)
-      .set({ lastActivityDate: new Date().toISOString().slice(0, 10) })
+      .set({ lastActivityDate: today })
       .where(eq(users.id, session.user.id))
   })
 
