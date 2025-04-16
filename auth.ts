@@ -5,10 +5,12 @@ import { users } from './database/schema'
 import { eq } from 'drizzle-orm'
 import { compare } from 'bcryptjs'
 
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: 'jwt',
+  },
+  jwt: {
+    maxAge: 7 * 24 * 60 * 60, // 1 week in seconds
   },
   providers: [
     CredentialsProvider({

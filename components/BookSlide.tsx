@@ -4,13 +4,11 @@ import { Book } from '@/lib/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-
 import { Autoplay, Pagination } from 'swiper/modules'
 import BookCover from './BookCover'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { Star } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 interface Props {
   latestBooks: Book[]
@@ -36,12 +34,7 @@ const BookSlide = ({ latestBooks }: Props) => {
         <SwiperSlide key={book.id}>
           <div className='w-full h-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-10'>
             {/* ========== LEFT TEXT INFO ========== */}
-            <motion.div
-              className='flex flex-col w-full xl:w-1/2 gap-5'
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            >
+            <div className='flex flex-col w-full xl:w-1/2 gap-5'>
               <h1 className='text-5xl font-semibold text-white md:text-7xl text-center xl:text-start'>
                 {book.title}
               </h1>
@@ -75,16 +68,11 @@ const BookSlide = ({ latestBooks }: Props) => {
                   Go to Book
                 </Link>
               </Button>
-            </motion.div>
+            </div>
 
             {/* ========== RIGHT COVER STACK ========== */}
 
-            <motion.div
-              className='relative w-full md:w-[40%] xl:w-[35%] flex justify-center items-center'
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            >
+            <div className='relative w-full md:w-[40%] xl:w-[35%] flex justify-center items-center'>
               <div className='relative'>
                 {/* Foreground book */}
                 <BookCover
@@ -102,7 +90,7 @@ const BookSlide = ({ latestBooks }: Props) => {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </SwiperSlide>
       ))}
