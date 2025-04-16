@@ -35,21 +35,22 @@ const ProfileBooksSection = ({
       ) : (
         <div
           className={cn(
-            'mt-5 p-4 rounded-xl w-full flex gap-7',
+            'mt-5 p-4 rounded-xl w-full flex ',
             horizontalScroll
-              ? 'overflow-x-auto flex-nowrap snap-x snap-mandatory scroll-pl-4'
-              : 'flex-wrap'
+              ? 'overflow-x-auto flex-nowrap snap-x snap-mandatory scroll-pl-7 gap-10 pb-10'
+              : ' justify-center xl:justify-start flex-wrap gap-3'
           )}
         >
           {records.map((record) => (
             <div
               key={record.borrowRecord.id}
               className={cn(
-                'flex flex-col gap-3 snap-start',
-                horizontalScroll && 'min-w-[300px]'
+                'flex flex-col gap-3 snap-start  ',
+                horizontalScroll &&
+                  ' min-w-[300px] shadow-slate-700 shadow-lg rounded-xl'
               )}
             >
-              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-4  bg-[#12141D]  w-[300px]  h-[460px] '>
+              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-4  bg-[#12141D]  w-[300px]  h-[460px]  shadow-slate-700 shadow-lg '>
                 {/* Book cover */}
                 <div className='relative p-6 h-[250px]'>
                   {/* Background color layer */}

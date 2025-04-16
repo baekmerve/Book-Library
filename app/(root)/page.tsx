@@ -6,7 +6,7 @@ export default async function Home() {
   const latestBooks = await fetchLatestBooks()
 
   return (
-    <>
+    <div className=''>
       <BookSlide latestBooks={latestBooks} />
 
       <SimpleBookList
@@ -14,6 +14,6 @@ export default async function Home() {
         books={latestBooks}
         horizontalScroll
       />
-    </>
+    </div>
   )
 }

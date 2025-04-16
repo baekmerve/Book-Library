@@ -29,7 +29,7 @@ const UserProfile = async () => {
 
   return (
     <div className='w-full mx-auto flex flex-col gap-8 py-4 px-2 sm:px-4 xl:px-0'>
-      <div className='w-full flex flex-col xl:flex-row  xl:items-center gap-6 xl:gap-10 '>
+      <div className='w-full flex flex-col xl:flex-row   gap-6 xl:gap-10 '>
         {/* PROFILE INFO  */}
         <ProfileCard
           userName={session?.user?.name ?? ''}

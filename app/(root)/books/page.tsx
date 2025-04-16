@@ -20,24 +20,22 @@ const Books = async (props: {
     <div className='flex flex-col items-center w-full min-h-screen gap-5'>
       <SearchBox />
 
-      {!searchWord && !searchWord.trim() && (
-        <SimpleBookList title='All Books' books={bookList} />
-      )}
+      {!searchWord && !searchWord.trim() && <SimpleBookList books={bookList} />}
 
       <div className='w-full '>
         {searchWord.trim() && (
-          <>
-            <p className='text-xl lg:text-3xl font-bold text-white'>
+          <div className='mt-10 text-center'>
+            <p className='text-xl xl:text-2xl font-bold text-white'>
               Search Results for{' '}
-              <span className='font-semibold text-primary'>{searchWord}</span>
+              <span className='font-semibold text-soft-pink'>{searchWord}</span>
             </p>
 
             {searchResult && searchResult.length > 0 ? (
-              <SimpleBookList title='Searched Books' books={searchResult} />
+              <SimpleBookList  books={searchResult} />
             ) : (
               <BookNotFound />
             )}
-          </>
+          </div>
         )}
       </div>
     </div>

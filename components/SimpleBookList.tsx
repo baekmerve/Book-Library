@@ -4,22 +4,17 @@ import { cn } from '@/lib/utils'
 import BookCover from './BookCover'
 
 interface Props {
-  title: string
+  title?: string
   books: Book[]
   horizontalScroll?: boolean
 }
 
-const SimpleBookList = ({
-  title,
-  books,
-
-  horizontalScroll,
-}: Props) => {
+const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
   if (books.length < 1) return
 
   return (
     <section className=' mt-28 flex flex-wrap items-center gap-5 '>
-      <h2 className=' w-full font-bebas text-4xl text-center xl:text-left text-light-100 '>
+      <h2 className=' w-full font-bebas text-4xl text-center xl:text-left text-light-100 mx-auto'>
         {title}
       </h2>
 
