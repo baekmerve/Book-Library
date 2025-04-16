@@ -36,9 +36,7 @@ const BookCover = ({
             path={coverImage}
             urlEndpoint={config.env.imagekit.urlEndpoint}
             alt='Default book cover image'
-            //fill
-            width={300}
-            height={400}
+            fill
             className='rounded-sm object-cover'
             loading='lazy'
             lqip={{ active: true }}

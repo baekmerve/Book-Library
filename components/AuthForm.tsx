@@ -120,7 +120,7 @@ const AuthForm = <T extends FieldValues>({
           <Button
             type='submit'
             disabled={isProcessing}
-            className='bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base cursor-pointer hover:ring-2 hover:ring-cyan-500 hover:shadow-2xl'
+            className='bg-primary text-dark-100  inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base cursor-pointer  hover:shadow-xl hover:bg-soft-pink transition-all duration-500 '
           >
             {isProcessing && (
               <span className='animate-spin mr-2 border-t-2 border-b-2 border-dark-100 rounded-full w-4 h-4' />
