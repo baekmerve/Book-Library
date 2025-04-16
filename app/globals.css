@@ -104,11 +104,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-red-950 rounded-full;
+    @apply  bg-slate-800 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-background/30 rounded-full;
+    @apply bg-blue-200 rounded-full;
   }
 }
 

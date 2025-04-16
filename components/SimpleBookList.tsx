@@ -18,17 +18,17 @@ const SimpleBookList = ({
   if (books.length < 1) return
 
   return (
-    <section className='mt-28 flex flex-wrap  items-center gap-5'>
-      <h2 className='w-full font-bebas text-4xl text-center xl:text-left text-light-100'>
+    <section className=' mt-28 flex flex-wrap items-center gap-5 '>
+      <h2 className=' w-full font-bebas text-4xl text-center xl:text-left text-light-100 '>
         {title}
       </h2>
 
       <ul
         className={cn(
-          'mt-10 w-full flex pb-10',
+          ' mt-10 flex w-full',
           horizontalScroll
-            ? 'overflow-x-auto flex-nowrap snap-x snap-mandatory scroll-pl-4 gap-10'
-            : 'flex-wrap gap-x-3 gap-y-7'
+            ? ' overflow-x-auto flex-nowrap snap-x snap-mandatory scroll-pl-4 gap-10  pb-10'
+            : 'flex-wrap gap-x-2 gap-y-7 justify-center '
         )}
       >
         {books.map((book) => (

@@ -20,7 +20,8 @@ const BookSlide = ({ latestBooks }: Props) => {
       loop={true}
       pagination={{
         clickable: true,
-        bulletClass: 'swiper-pagination-bullet !bg-primary !opacity-80',
+        bulletClass:
+          'swiper-pagination-bullet !bg-soft-pink !opacity-80 !size-3 ',
         bulletActiveClass: '!bg-white !opacity-100',
       }}
       autoplay={{
@@ -32,10 +33,10 @@ const BookSlide = ({ latestBooks }: Props) => {
     >
       {latestBooks.map((book) => (
         <SwiperSlide key={book.id}>
-          <div className='w-full h-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-10'>
+          <div className='w-full h-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-15'>
             {/* ========== LEFT TEXT INFO ========== */}
-            <div className='flex flex-col w-full xl:w-1/2 gap-5'>
-              <h1 className='text-5xl font-semibold text-white md:text-7xl text-center xl:text-start'>
+            <div className='flex flex-col w-full xl:w-1/2 gap-5 items-center xl:items-start'>
+              <h1 className='text-5xl font-semibold text-white md:text-7xl text-center xl:text-left'>
                 {book.title}
               </h1>
               <div className='mt-7 text-xl text-light-100 space-y-2'>
