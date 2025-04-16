@@ -1,40 +1,17 @@
-// export interface Book {
-//   id: string
-//   title: string
-//   author: string
-//   genre: string
-//   rating: number
-//   totalCopies: number
-//   availableCopies: number
-//   description: string
-//   coverColor: string
-//   coverUrl: string
-//   videoUrl: string
-//   summary: string
-//   createdAt: Date | null
-// }
-
 export interface Book {
-  // id: string - active when u use database
-  id: number
+  id: string
   title: string
   author: string
   genre: string
   rating: number
-  total_copies: number
-  available_copies: number
+  totalCopies: number
+  availableCopies: number
   description: string
-  color: string
-  cover: string
-  video: string
+  coverColor: string
+  coverUrl: string
+  videoUrl?: string | null
   summary: string
-  isLoanedBook?: boolean
-}
-
-export interface AuthCredentials {
-  fullName: string
-  email: string
-  password: string
+  createdAt: Date | null
 }
 
 export interface BookParams {
@@ -46,25 +23,40 @@ export interface BookParams {
   coverColor: string
   description: string
   totalCopies: number
-  videoUrl: string
+  videoUrl?: string
   summary: string
 }
 
-export interface BorrowBookParams {
-  bookId: string
-  userId: string
+export interface AuthCredentials {
+  fullName: string
+  email: string
+  password: string
 }
 
-export type BookCoverVariant =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'regular'
-  | 'wide'
+export interface User {
+  id: string
+  fullName: string
+  email: string
+  role: 'ADMIN' | 'USER'
+  lastActivityDate: string
+  createdAt: Date | null
+}
 
-export type BookCoverType = {
-  variant?: BookCoverVariant
-  className?: string
-  coverColor: string
-  coverImage: string
+export interface BorrowRecord {
+  id: string
+  userId: string
+  bookId: string
+  borrowDate: Date | null
+  dueDate: string
+  returnDate: string | null
+  status: 'BORROWED' | 'RETURNED'
+}
+
+export type BorrowedBookType = {
+  borrowRecord: BorrowRecord
+  book: Book | null
+}
+
+export type UserAccountType = User & {
+  borrowRecords: BorrowedBookType[]
 }

@@ -1,43 +1,26 @@
-'use client'
-
-import { cn, getInitials } from '@/lib/utils'
 import { BookOpen } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Session } from 'next-auth'
+import LogoutButton from './LogoutButton'
+import { navLinks } from '@/app/constants '
+import NavButton from './NavButton'
 
-const Header = ({ session }: { session: Session }) => {
-  const pathname = usePathname()
-
+const Header = () => {
   return (
-    <header className='my-10 flex justify-between gap-5 text-white'>
-      <Link href='/'>
-        <BookOpen className='h-12 w-12' />
-      </Link>
+    <header className='fixed top-0 left-0 z-50 w-full pt-5 lg:pt-10 pb-5 transition-all duration-300 bg-black/30 backdrop-blur-lg border-b border-white/10'>
+     
 
-      <ul className=' flex flex-row items-center gap-8'>
-        <li>
-          <Link
-            href='/library'
-            className={cn(
-              'text-base cursor-pointer capitalize',
-              pathname === 'library' ? 'text-light-200' : 'text-light-100'
-            )}
-          >
-            Library
-          </Link>
-        </li>
-        <li>
-          <Link href='my-profile'>
-            <Avatar>
-              <AvatarFallback className='bg-amber-100 text-dark-100'>
-                {getInitials(session?.user?.name || 'IN')}
-              </AvatarFallback>
-            </Avatar>
-          </Link>
-        </li>
-      </ul>
+      <div className='flex flex-col mx-auto items-center  lg:flex-row max-w-[90%] justify-between gap-5 '>
+        <Link href='/' className='flex text-white items-center gap-2'>
+          <BookOpen className='size-12' />
+          <h1 className='font-bebas text-3xl tracking-wider'>Book Library</h1>
+        </Link>
+        <div className='flex items-center gap-2 md:gap-5 font-bebas text-xl tracking-wider   '>
+          {navLinks.map((link) => (
+            <NavButton key={link.route} {...link} />
+          ))}
+          <LogoutButton />
+        </div>
+      </div>
     </header>
   )
 }

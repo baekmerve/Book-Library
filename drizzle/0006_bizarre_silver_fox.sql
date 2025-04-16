@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "last_acitivit_date" SET NOT NULL;

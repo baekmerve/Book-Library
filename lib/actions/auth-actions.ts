@@ -1,9 +1,9 @@
 'use server'
 import { db } from '@/database/drizzle'
-import { AuthCredentials } from './../types'
-import { users } from '@/database/schema'
+import { AuthCredentials, UserAccountType } from './../types'
+import { books, borrowRecords, users } from '@/database/schema'
 import { eq } from 'drizzle-orm'
-import { signIn } from '@/auth'
+import { signIn, signOut } from '@/auth'
 import { hash } from 'bcryptjs'
 import { headers } from 'next/headers'
 import ratelimit from '../ratelimit'
@@ -11,7 +11,7 @@ import { redirect } from 'next/navigation'
 import { workflowClient } from '../workflow-client'
 import config from '../config'
 
-export const SignInWithCredentials = async (
+export const signInWithCredentials = async (
   params: Pick<AuthCredentials, 'email' | 'password'>
 ) => {
   const { email, password } = params
@@ -32,7 +32,7 @@ export const SignInWithCredentials = async (
     }
     return { success: true }
   } catch (error) {
-    console.log('🚀 - SignIn - error:', error)
+    console.error('🚀 - SignIn - error:', error)
     return { success: false, error: 'Signin error' }
   }
 }
@@ -74,13 +74,68 @@ export const signUp = async (params: AuthCredentials) => {
       },
     })
 
-    await SignInWithCredentials({ email, password })
+    await signInWithCredentials({ email, password })
 
     return {
       success: true,
     }
   } catch (error) {
-    console.log('🚀 - signUp - error:', error)
+    console.error('🚀 - signUp - error:', error)
     return { success: false, error: 'Signup error' }
+  }
+}
+
+export const logout = async () => {
+  await signOut()
+}
+
+export const getAccountDetails = async (
+  userId: string
+): Promise<UserAccountType> => {
+  // 1. Get user details
+  const user = await db.select().from(users).where(eq(users.id, userId))
+
+  // Ensure that the user is not null
+  if (user.length === 0) {
+    throw new Error('User not found')
+  }
+
+  // 2. Get all borrow records for the user (with book info)
+  const borrowRecordsWithBooks = await db
+    .select({
+      borrowRecord: {
+        id: borrowRecords.id,
+        userId: borrowRecords.userId,
+        bookId: borrowRecords.bookId,
+        borrowDate: borrowRecords.borrowDate,
+        dueDate: borrowRecords.dueDate,
+        returnDate: borrowRecords.returnDate,
+        status: borrowRecords.status,
+      },
+      book: {
+        id: books.id,
+        title: books.title,
+        author: books.author,
+        genre: books.genre,
+        coverUrl: books.coverUrl,
+        coverColor: books.coverColor,
+        rating: books.rating,
+        totalCopies: books.totalCopies,
+        availableCopies: books.availableCopies,
+        description: books.description,
+        summary: books.summary,
+        videoUrl: books.videoUrl,
+        createdAt: books.createdAt,
+      },
+    })
+
+    .from(borrowRecords)
+    .leftJoin(books, eq(borrowRecords.bookId, books.id))
+    .where(eq(borrowRecords.userId, userId))
+
+
+  return {
+    ...user[0],
+    borrowRecords: borrowRecordsWithBooks,
   }
 }

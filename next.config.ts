@@ -13,15 +13,19 @@ const nextConfig: NextConfig = {
         hostname: 'ik.imagekit.io',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+      },
     ],
   },
-  typescript:{
-    ignoreBuildErrors: true
+  typescript: {
+    ignoreBuildErrors: true,
   },
-  eslint:{
-    ignoreDuringBuilds: true
-  }
-
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 export default nextConfig

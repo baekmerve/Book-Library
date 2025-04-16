@@ -1,19 +1,18 @@
-import BookList from '@/components/BookList'
-import BookOverview from '@/components/BookOverview'
-import { sampleBooks } from '../constants '
-import { db } from '@/database/drizzle'
-import { users } from '@/database/schema'
+import SimpleBookList from '@/components/SimpleBookList'
+import BookSlide from '@/components/BookSlide'
+import { fetchLatestBooks } from '@/lib/actions/book-actions'
 
 export default async function Home() {
-  const result = await db.select().from(users)
-  console.log(JSON.stringify(result, null, 2))
+  const latestBooks = await fetchLatestBooks()
+
   return (
     <>
-      <BookOverview {...sampleBooks[0]} />
-      <BookList
-        title='Latest Books'
-        books={sampleBooks}
-        contaierClassname='mt-28'
+      <BookSlide latestBooks={latestBooks} />
+
+      <SimpleBookList
+        title='Recently Added'
+        books={latestBooks}
+        horizontalScroll
       />
     </>
   )

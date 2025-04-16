@@ -1,61 +1,74 @@
 import { Book } from '@/lib/types'
-import Image from 'next/image'
-import { Button } from './ui/button'
 import BookCover from './BookCover'
+import { Star } from 'lucide-react'
 
 const BookOverview = ({
   title,
   author,
   genre,
   rating,
-  total_copies,
-  available_copies,
+  totalCopies,
+  availableCopies,
   description,
-  color,
-  cover,
+  coverColor,
+  coverUrl,
 }: Book) => {
   return (
-    <section className='book-overview'>
-      <div className='flex flex-1 flex-col gap-5'>
-        <h1>{title}</h1>
-        <div className='book-info'>
-          <p>
-            By <span className='font-semibold text-light-200'>{author}</span>
-          </p>
-          <p>
-            Category{' '}
-            <span className='font-semibold text-light-200'>{genre}</span>
-          </p>
-          <div className='flex flex-row gap-1'>
-            <Image src='/icons/star.svg' alt='star' width={22} height={22} />
-            <p>{rating}</p>
-          </div>
-        </div>
-        <div className='book-copies'>
-          <p className=''>
-            Total Books: <span>{total_copies}</span>
-          </p>
-          <p className=''>
-            Available Books: <span>{available_copies}</span>
-          </p>
-        </div>
-        <p className='book-description'> {description} </p>
-        <Button className='book-overview_btn'>
-          <Image src='/icons/book.svg' alt='book' width={20} height={20} />
-          <p className='font-bebas text-xl text-dark-100'>Borrow </p>
-        </Button>
-      </div>
-      <div className=' relativeflex flex-1 justify-center'>
+    <section className='relative flex flex-col gap-12 xl:flex-row xl:items-start xl:gap-20 bg-gray-800 rounded-3xl p-8 sm:p-14 shadow-xl shadow-black/30 border border-white/10'>
+      {/* Left: Book Cover */}
+      <div className='w-full xl:w-[35%] flex justify-center relative'>
         <div className='relative'>
           <BookCover
-            variant='wide'
-            className='z-10'
-            coverColor={color}
-            coverImage={cover}
+            coverColor={coverColor}
+            coverImage={coverUrl}
+            className=' w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px] z-10'
           />
-          <div className='absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
-            <BookCover variant='wide' coverColor={color} coverImage={cover} />
+          <div className='absolute top-4 left-4 rotate-10 opacity-25 z-0'>
+            <BookCover
+              coverColor={coverColor}
+              coverImage={coverUrl}
+              className=' w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px]'
+            />
           </div>
+        </div>
+      </div>
+
+      {/* Right: Book Info */}
+      <div className='w-full xl:w-[65%] flex flex-col gap-8 text-light-100'>
+        <h1 className='text-4xl md:text-5xl font-bold text-white'>{title}</h1>
+
+        <div className='space-y-2 text-lg'>
+          <p>
+            <span className='font-semibold text-primary'>Author:</span>{' '}
+            <span className='text-white'>{author}</span>
+          </p>
+          <p>
+            <span className='font-semibold text-primary'>Genre:</span>{' '}
+            <span className='text-white'>{genre}</span>
+          </p>
+          <p className='flex  items-center gap-1'>
+            <span className='font-semibold text-primary'> Rating:</span>
+
+            <Star className='size-4.5 text-yellow-500 fill-yellow-500' />
+            <span className='text-white'> {rating}/5</span>
+          </p>
+          <p>
+            <span className='font-semibold text-primary'>Total Copies:</span>
+            <span className='text-white'> {totalCopies}</span>
+          </p>
+          <p>
+            <span className='font-semibold text-primary'>Available to Borrow:</span>{' '}
+            <span className='text-white'>{availableCopies}</span>
+          </p>
+        </div>
+
+        <div>
+          <h3 className='text-2xl font-semibold text-white mb-2'>
+            Description
+          </h3>
+          <p className='text-white leading-relaxed text-justify whitespace-pre-line'>
+            {description}
+          </p>
         </div>
       </div>
     </section>

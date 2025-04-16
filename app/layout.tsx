@@ -44,11 +44,10 @@ export const metadata: Metadata = {
 }
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
-  
   const session = await auth()
-  
+
   return (
-    <html lang='en'>
+    <html lang='en' className='scroll-smooth' suppressHydrationWarning>
       <SessionProvider session={session}>
         <body className={`${ibm.className} ${bebas.variable} antialiased`}>
           {children}

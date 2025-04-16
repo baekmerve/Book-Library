@@ -24,6 +24,7 @@ import Link from 'next/link'
 import { FIELD_NAMES, FIELD_TYPES } from '@/app/constants '
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>
@@ -38,6 +39,8 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: Props<T>) => {
+  const [isProcessing, setIsProcessing] = useState(false)
+
   const router = useRouter()
   const isSignIn = type === 'SIGN_IN'
 
@@ -49,18 +52,27 @@ const AuthForm = <T extends FieldValues>({
 
   // Define  submit handler
   const handleSubmit: SubmitHandler<T> = async (data) => {
-    const result = await onSubmit(data)
-    if (result.success) {
-      toast.success('Success', {
-        description: isSignIn
-          ? 'You have successfully signed in'
-          : 'You have successfully signed up',
-      })
-      router.push('/')
-    } else {
-      toast.error(`Error ${isSignIn ? 'signing in' : 'signing up'}`, {
-        description: result.error ?? 'An error occured',
-      })
+    setIsProcessing(true)
+    try {
+      const result = await onSubmit(data)
+
+      if (result.success) {
+        toast.success('Success', {
+          description: isSignIn
+            ? 'You have successfully signed in'
+            : 'You have successfully signed up',
+        })
+        router.push('/')
+      } else {
+        setIsProcessing(false)
+        toast.error(`Error ${isSignIn ? 'signing in' : 'signing up'}`, {
+          description: result.error ?? 'An error occured',
+        })
+      }
+    } catch (error) {
+      console.log('🚀 - consthandleSubmit:SubmitHandler<T>= - error:', error)
+    } finally {
+      setIsProcessing(false)
     }
   }
 
@@ -95,7 +107,7 @@ const AuthForm = <T extends FieldValues>({
                     <Input
                       type={FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]}
                       {...field}
-                      className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300'
+                      className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-gray-900/90'
                     />
                   </FormControl>
 
@@ -107,21 +119,32 @@ const AuthForm = <T extends FieldValues>({
 
           <Button
             type='submit'
-            className='bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'
+            disabled={isProcessing}
+            className='bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base cursor-pointer hover:ring-2 hover:ring-cyan-500 hover:shadow-2xl'
           >
+            {isProcessing && (
+              <span className='animate-spin mr-2 border-t-2 border-b-2 border-dark-100 rounded-full w-4 h-4' />
+            )}
             {isSignIn ? 'Sign In' : 'Sign Up'}
           </Button>
         </form>
       </Form>
       <p className='text-center text-base font-medium'>
-        {isSignIn ? 'Don’t have an account? ' : 'Already have an account? '}
-
-        <Link
-          href={isSignIn ? '/sign-up' : '/sign-in'}
-          className='font-bold text-primary hover:underline'
-        >
-          {isSignIn ? 'Register here' : 'Login'}
-        </Link>
+        {isProcessing ? (
+          <span className='text-white/70 font-semibold animate-pulse'>
+            {isSignIn ? 'Signing in...' : 'Signing up...'}
+          </span>
+        ) : (
+          <>
+            {isSignIn ? 'Don’t have an account? ' : 'Already have an account? '}
+            <Link
+              href={isSignIn ? '/sign-up' : '/sign-in'}
+              className='font-bold text-primary hover:underline'
+            >
+              {isSignIn ? 'Register here' : 'Login'}
+            </Link>
+          </>
+        )}
       </p>
     </div>
   )
