@@ -29,6 +29,7 @@ const ibm = localFont({
       style: 'normal',
     },
   ],
+  display: 'swap',
 })
 
 const bebas = localFont({
@@ -36,6 +37,7 @@ const bebas = localFont({
     { path: '/fonts/BebasNeue-Regular.ttf', weight: '400', style: 'normal' },
   ],
   variable: '--bebas',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {

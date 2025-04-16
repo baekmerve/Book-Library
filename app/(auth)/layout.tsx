@@ -18,7 +18,8 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       />
 
       {/* Blurred Overlay Container */}
-      <div className='relative z-10 mx-5 w-full max-w-xl rounded-xl p-10 bg-white/20 backdrop-blur-md '>
+      {/* <div className='relative z-10 mx-5 w-full max-w-xl rounded-xl p-10 bg-white/20 backdrop-blur-md '> */}
+      <div className='relative z-10 mx-5 w-full max-w-xl min-h-[500px] rounded-xl p-10 bg-white/20 backdrop-blur'>
         {/* Header */}
         <div className='mb-6 flex items-center gap-3'>
           <Image src='/icons/logo.svg' alt='logo' width={37} height={37} />
