@@ -6,7 +6,6 @@ import { IKImage } from 'imagekitio-next'
 import config from '@/lib/config'
 import Link from 'next/link'
 
-
 interface Props {
   className?: string
   coverColor: string
@@ -21,7 +20,7 @@ const BookCover = ({
   id,
 }: Props) => {
   return (
-    <Link href={`/books/${id}`} className=''>
+    <Link href={`/books/${id}`} aria-label={`${id} book cover`}>
       <div
         className={cn(
           'relative transition-all duration-300  rounded ',
@@ -36,7 +35,7 @@ const BookCover = ({
           <IKImage
             path={coverImage}
             urlEndpoint={config.env.imagekit.urlEndpoint}
-            alt='book cover'
+            alt={`${id} book cover`}
             fill
             className='rounded-sm object-fill'
             loading='lazy'

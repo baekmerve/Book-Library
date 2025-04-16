@@ -8,7 +8,11 @@ const Books = () => {
       <div className='flex flex-wrap items-center justify-between gap-2'>
         <h2 className='text-xl font-semibold'>All Books</h2>
         <Button className='bg-primary-admin cursor-pointer' asChild>
-          <Link href='/admin/books/new' className='text-white'>
+          <Link
+            aria-label='Create a new Book'
+            href='/admin/books/new'
+            className='text-white'
+          >
             + Create a new Book
           </Link>
         </Button>

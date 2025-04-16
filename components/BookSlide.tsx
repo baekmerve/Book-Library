@@ -68,7 +68,12 @@ const BookSlide = ({ latestBooks }: Props) => {
                 className='mt-4 min-h-14 text-xl w-fit px-10 bg-primary text-dark-100 hover:bg-primary/70 cursor-pointer'
                 asChild
               >
-                <Link href={`/books/${book.id}`}>Go to Book</Link>
+                <Link
+                  aria-label='Go to Book details'
+                  href={`/books/${book.id}`}
+                >
+                  Go to Book
+                </Link>
               </Button>
             </motion.div>
 

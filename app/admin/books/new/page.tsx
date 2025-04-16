@@ -10,7 +10,10 @@ const NewBook = () => {
         asChild
         className='mb-10 w-fit p-5 border-2 border-primary bg-white text-sm font-medium text-black/90 hover:bg-primary cursor-pointer'
       >
-        <Link href='/admin/books'>Go Back</Link>
+        <Link 
+        href='/admin/books'>
+          Go Back
+        </Link>
       </Button>
       <section className='w-full max-w-2xl'>
         <BookForm type='create' />
