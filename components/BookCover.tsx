@@ -37,7 +37,7 @@ const BookCover = ({
             urlEndpoint={config.env.imagekit.urlEndpoint}
             alt={`${id} book cover`}
             fill
-            className='rounded-sm object-fill'
+            className='rounded-sm object-cover'
             loading='lazy'
             lqip={{ active: true }}
           />
