@@ -9,8 +9,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: 'jwt',
   },
-  jwt: {
-    maxAge: 7 * 24 * 60 * 60, // 1 week in seconds
+
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true, // Cookie can't be accessed via JavaScript
+        secure: process.env.NODE_ENV === 'production', // Only use secure cookies in production (HTTPS)
+        sameSite: 'lax', // Safe for cross-site navigation
+        maxAge: 7 * 24 * 60 * 60, // 1 week
+        path: '/', // Cookie is valid for the entire domain
+      },
+    },
   },
   providers: [
     CredentialsProvider({
