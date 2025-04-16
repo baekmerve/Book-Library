@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import { Toaster } from '@/components/ui/sonner'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/auth'
+import Head from 'next/head'
 
 const ibm = localFont({
   src: [
@@ -48,6 +49,14 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <html lang='en' className='scroll-smooth' suppressHydrationWarning>
+      <Head>
+        <link
+          rel='preconnect'
+          href='https://ik.imagekit.io'
+          crossOrigin='anonymous'
+        />
+        <link rel='dns-prefetch' href='https://ik.imagekit.io' />
+      </Head>
       <SessionProvider session={session}>
         <body className={`${ibm.className} ${bebas.variable} antialiased`}>
           {children}

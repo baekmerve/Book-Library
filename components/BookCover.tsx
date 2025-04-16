@@ -35,7 +35,9 @@ const BookCover = ({
           <IKImage
             path={coverImage}
             urlEndpoint={config.env.imagekit.urlEndpoint}
-            alt={`${id} book cover`}
+            alt={
+              id && coverImage ? `${id} book cover` : 'Default book cover image'
+            } 
             fill
             className='rounded-sm object-cover'
             loading='lazy'
