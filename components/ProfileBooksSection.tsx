@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import BookCover from './BookCover'
 import BookActionButton from './BookActionButton'
 import { returnBook } from '@/lib/actions/book-actions'
+import Link from 'next/link'
 
 interface BookListSectionProps {
   title: string
@@ -45,14 +46,14 @@ const ProfileBooksSection = ({
             <div
               key={record.borrowRecord.id}
               className={cn(
-                'flex flex-col gap-3 snap-start  ',
+                'flex flex-col gap-5 snap-start  ',
                 horizontalScroll &&
                   ' min-w-[300px] shadow-slate-700 shadow-lg rounded-xl'
               )}
             >
-              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-4  bg-[#12141D]  w-[300px]  h-[460px]  shadow-slate-700 shadow-lg '>
+              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-2  bg-[#12141D]  w-[300px]  h-[460px]  shadow-slate-700 shadow-lg '>
                 {/* Book cover */}
-                <div className='relative p-6 h-[250px]'>
+                <div className='relative p-6  h-[250px]'>
                   {/* Background color layer */}
                   <div
                     className='absolute inset-0 z-10 m-1 rounded-xl'
@@ -62,12 +63,13 @@ const ProfileBooksSection = ({
                     }}
                   />
                   <div className='relative z-20 '>
-                    <BookCover
-                      coverColor={record.book?.coverColor as string}
-                      coverImage={record.book?.coverUrl as string}
-                      className='w-[150px] h-[190px]'
-                      id={record.book?.id}
-                    />
+                    <Link href={`/books/${record.book?.id}`}>
+                      <BookCover
+                        coverColor={record.book?.coverColor as string}
+                        coverImage={record.book?.coverUrl as string}
+                        className='w-[150px] h-[190px]'
+                      />
+                    </Link>
                   </div>
                 </div>
                 {/* Book info */}

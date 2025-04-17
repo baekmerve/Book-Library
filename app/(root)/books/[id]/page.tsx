@@ -9,8 +9,8 @@ import {
   fetchBookById,
   returnBook,
 } from '@/lib/actions/book-actions'
-import { redirect } from 'next/navigation'
 import SimilarBooks from '@/components/SimilarBooks'
+import { notFound } from 'next/navigation'
 
 const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params
@@ -18,7 +18,10 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
   const [session, bookDetails] = await Promise.all([auth(), fetchBookById(id)])
 
   const userId = session?.user?.id as string
-  if (!bookDetails) redirect('/404')
+
+  if (!bookDetails) {
+    notFound()
+  }
 
   const availableToBorrow = bookDetails.availableCopies > 0
 

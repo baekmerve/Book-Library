@@ -2,6 +2,7 @@ import { Book } from '@/lib/types'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import BookCover from './BookCover'
+import Link from 'next/link'
 
 interface Props {
   title?: string
@@ -38,12 +39,14 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
           >
             <div className='flex flex-col items-center justify-center w-full h-[220px] relative rounded-xl overflow-hidden'>
               <div className='w-full h-[220px] flex items-center justify-center'>
-                <BookCover
-                  coverColor={book.coverColor}
-                  coverImage={book.coverUrl}
-                  className='w-[150px] h-[190px]'
-                  id={book.id}
-                />
+                <Link href={`/books/${book?.id}`}>
+                  <BookCover
+                    coverColor={book.coverColor}
+                    coverImage={book.coverUrl}
+                    className='w-[150px] h-[190px]'
+    
+                  />
+                </Link>
               </div>
             </div>
             <div className='mt-4 text-center px-2'>

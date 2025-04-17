@@ -1,9 +1,11 @@
 import { fetchSimilarBook } from '@/lib/actions/book-actions'
 import React from 'react'
 import BookCover from './BookCover'
+import Link from 'next/link'
 
 const SimilarBooks = async ({ genre }: { genre: string }) => {
   const similarBookList = await fetchSimilarBook(genre)
+
 
   if (!similarBookList?.length) return null
   return (
@@ -18,12 +20,13 @@ const SimilarBooks = async ({ genre }: { genre: string }) => {
             key={book.id}
             className=' shadow-xl shadow-black hover:shadow-indigo-300/20 transition duration-300 '
           >
-            <BookCover
-              coverColor={book.coverColor}
-              coverImage={book.coverUrl}
-              className='w-[120px] h-[160px]'
-              id={book.id}
-            />
+            <Link href={`/books/${book.id}`} className='w-full'>
+              <BookCover
+                coverColor={book.coverColor}
+                coverImage={book.coverUrl}
+                className='w-[120px] h-[160px]'
+              />
+            </Link>
           </div>
         ))}
       </div>

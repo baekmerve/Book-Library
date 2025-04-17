@@ -130,29 +130,45 @@ export const isBookBorrowed = async (
 }
 
 export const fetchAllBooks = async (): Promise<Book[]> => {
-  const bookList = await db.select().from(books).orderBy(desc(books.createdAt))
-  return bookList
+  try {
+    const bookList = await db
+      .select()
+      .from(books)
+      .orderBy(desc(books.createdAt))
+    return bookList
+  } catch (error) {
+    console.log('🚀 - fetchAllBooks - error:', error)
+    throw new Error('Failed to fetch book list.')
+  }
 }
 
 export const fetchBookById = async (bookId: string): Promise<Book | null> => {
-  const book = await db
-    .select()
-    .from(books)
-    .where(eq(books.id, bookId))
-
-    .limit(1)
-  if (!book.length) return null
-  return book[0]
+  try {
+    const book = await db
+      .select()
+      .from(books)
+      .where(eq(books.id, bookId))
+      .limit(1)
+    return book[0]
+  } catch (error) {
+    console.log('🚀 - fetchBookById - error:', error)
+    throw new Error('Failed to fetch the book.')
+  }
 }
 
 export const fetchLatestBooks = async (): Promise<Book[]> => {
-  const latestBooks = await db
-    .select()
-    .from(books)
-    .limit(10)
-    .orderBy(desc(books.createdAt))
+  try {
+    const latestBooks = await db
+      .select()
+      .from(books)
+      .limit(10)
+      .orderBy(desc(books.createdAt))
 
-  return latestBooks
+    return latestBooks
+  } catch (error) {
+    console.log('🚀 - fetchLatestBooks - error:', error)
+    throw new Error('Failed to fetch the newly added books.')
+  }
 }
 
 export const fetchBookByKeyword = async (
