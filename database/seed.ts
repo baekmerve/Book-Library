@@ -1,5 +1,6 @@
 import ImageKit from 'imagekit'
 import dummyBooks from '../dummybooks.json'
+
 import { books } from './schema'
 import { neon } from '@neondatabase/serverless'
 import { drizzle } from 'drizzle-orm/neon-http'
@@ -37,7 +38,6 @@ const seed = async () => {
 
   try {
     for (const book of dummyBooks) {
- 
       const coverUrl = (await uploadToImageKit(
         book.coverUrl,
         `${book.title}.jpg`,
@@ -49,7 +49,7 @@ const seed = async () => {
         `${book.title}.mp4`,
         '/books/videos'
       )) as string
-     
+
       await db.insert(books).values({
         ...book,
         coverUrl,

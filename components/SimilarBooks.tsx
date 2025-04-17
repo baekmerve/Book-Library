@@ -3,14 +3,18 @@ import React from 'react'
 import BookCover from './BookCover'
 import Link from 'next/link'
 
-const SimilarBooks = async ({ genre }: { genre: string }) => {
-  const similarBookList = await fetchSimilarBook(genre)
+interface Props {
+  genre: string
+  bookId: string
+}
 
+const SimilarBooks = async ({ genre, bookId }: Props) => {
+  const similarBookList = await fetchSimilarBook(genre, bookId)
 
   if (!similarBookList?.length) return null
   return (
     <section className='w-full flex flex-col gap-6'>
-      <h3 className='text-xl font-semibold text-soft-pink'>
+      <h3 className='text-base md:text-xl font-semibold text-soft-pink'>
         More Similar Books
       </h3>
 
@@ -24,7 +28,7 @@ const SimilarBooks = async ({ genre }: { genre: string }) => {
               <BookCover
                 coverColor={book.coverColor}
                 coverImage={book.coverUrl}
-                className='w-[120px] h-[160px]'
+                className='w-[120px] h-[180px]'
               />
             </Link>
           </div>

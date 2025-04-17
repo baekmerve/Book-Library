@@ -23,7 +23,7 @@ const ProfileBooksSection = ({
 }: BookListSectionProps) => {
   return (
     <section className='w-full flex flex-col p-4 rounded-xl'>
-      <h2 className='font-bebas text-3xl text-light-100 tracking-wider text-center xl:text-left'>
+      <h2 className='font-bebas text-2xl md:text-3xl text-light-100 tracking-wider text-center xl:text-left'>
         {title}
       </h2>
 
@@ -47,13 +47,12 @@ const ProfileBooksSection = ({
               key={record.borrowRecord.id}
               className={cn(
                 'flex flex-col gap-5 snap-start  ',
-                horizontalScroll &&
-                  ' min-w-[300px] shadow-slate-700 shadow-lg rounded-xl'
+                horizontalScroll && ' min-w-[250px]  rounded-xl'
               )}
             >
-              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-2  bg-[#12141D]  w-[300px]  h-[460px]  shadow-slate-700 shadow-lg '>
+              <div className='relative rounded-xl flex flex-col items-center justify-start px-5 py-2 gap-2 bg-[#12141D] w-[250px] h-[400px] md:w-[300px] md:h-[460px]  shadow-slate-700 shadow-lg '>
                 {/* Book cover */}
-                <div className='relative p-6  h-[250px]'>
+                <div className='relative p-6 h-[250px]'>
                   {/* Background color layer */}
                   <div
                     className='absolute inset-0 z-10 m-1 rounded-xl'
@@ -67,7 +66,7 @@ const ProfileBooksSection = ({
                       <BookCover
                         coverColor={record.book?.coverColor as string}
                         coverImage={record.book?.coverUrl as string}
-                        className='w-[150px] h-[190px]'
+                        className='w-[120px] h-[180px] md:w-[150px] md:h-[190px]'
                       />
                     </Link>
                   </div>

@@ -52,8 +52,8 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className='flex flex-col gap-10 w-full xl:w-1/2 '>
           {/* Book Summary */}
           <section className='flex flex-col gap-4'>
-            <h3 className='text-xl font-semibold text-primary'>Book Summary</h3>
-            <div className='space-y-4 text-lg text-light-100 leading-relaxed'>
+            <h3 className='text-base md:text-xl font-semibold text-primary'>Book Summary</h3>
+            <div className='space-y-4  text-sm md:text-lg text-light-100 leading-relaxed'>
               {bookDetails.summary.split('\n').map((line, index) => (
                 <p key={index}>{line}</p>
               ))}
@@ -65,13 +65,13 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
           {/* Book Video */}
           {bookDetails.videoUrl && (
             <section className='flex flex-col gap-4'>
-              <h3 className='text-xl font-semibold text-primary'>Video</h3>
+              <h3 className='text-base md:text-xl font-semibold text-primary'>Video</h3>
               <BookVideo videoUrl={bookDetails.videoUrl} />
             </section>
           )}
           {/* Similar Books */}
 
-          <SimilarBooks genre={bookDetails.genre} />
+          <SimilarBooks genre={bookDetails.genre} bookId={bookDetails.id} />
         </div>
       </div>
     </div>

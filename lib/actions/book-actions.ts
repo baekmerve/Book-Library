@@ -3,7 +3,7 @@
 import { db } from '@/database/drizzle'
 import { Book, BorrowRecord } from '../types'
 import { books, borrowRecords } from '@/database/schema'
-import { and, desc, eq, like, or, sql } from 'drizzle-orm'
+import { and, desc, eq, like, not, or, sql } from 'drizzle-orm'
 import dayjs from 'dayjs'
 
 export interface BorrowBookParams {
@@ -190,14 +190,24 @@ export const fetchBookByKeyword = async (
 }
 
 export const fetchSimilarBook = async (
-  genre: string
+  genre: string,
+  bookId: string
 ): Promise<Book[] | undefined> => {
-  const bookList = await db
-    .select()
-    .from(books)
-    .where(like(sql`LOWER(${books.genre})`, `%${genre.toLowerCase()}%`))
-    .orderBy(sql`RANDOM()`)
-    .limit(6)
-
-  return bookList
+  try {
+    const bookList = await db
+      .select()
+      .from(books)
+      .where(
+        and(
+          like(sql`LOWER(${books.genre})`, `%${genre.toLowerCase()}%`),
+          not(eq(books.id, bookId))
+        )
+      )
+      .orderBy(sql`RANDOM()`)
+      .limit(6)
+    return bookList
+  } catch (error) {
+    console.error('🚀 - error:', error)
+    throw new Error('Failed to fetch similar books.')
+  }
 }

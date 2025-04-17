@@ -17,11 +17,11 @@ const BookSlide = ({ latestBooks }: Props) => {
   return (
     <Swiper
       slidesPerView={1}
-      loop={true}
+      loop
       pagination={{
         clickable: true,
         bulletClass:
-          'swiper-pagination-bullet !bg-soft-pink !opacity-80 !size-3 ',
+          'swiper-pagination-bullet !bg-soft-pink !opacity-80 !size-3',
         bulletActiveClass: '!bg-white !opacity-100',
       }}
       autoplay={{
@@ -33,61 +33,51 @@ const BookSlide = ({ latestBooks }: Props) => {
     >
       {latestBooks.map((book) => (
         <SwiperSlide key={book.id}>
-          <div className='w-full h-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-15'>
-            {/* ========== LEFT TEXT INFO ========== */}
-            <div className='flex flex-col w-full xl:w-1/2 gap-5 items-center xl:items-start'>
-              <h1 className='text-5xl font-semibold text-white md:text-7xl text-center xl:text-left'>
+          <div className='relative w-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-24 '>
+            {/* LEFT GLASS INFO */}
+            <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2  items-center xl:items-start text-center xl:text-left'>
+              <h1 className='text-xl md:text-3xl xl:text-5xl font-semibold text-white'>
                 {book.title}
               </h1>
-              <div className='mt-7 text-xl text-light-100 space-y-2'>
-                <p>
-                  By{' '}
-                  <span className='font-semibold text-blue-300'>
-                    {book.author}
-                  </span>
+              <div className='mt-6 text-base md:text-xl text-light-100 space-y-3 md:space-y-5'>
+                <p className='text-white'>
+                  By <span className='font-semibold '>{book.author}</span>
                 </p>
-                <p>
-                  Category:{' '}
-                  <span className='font-semibold text-blue-300'>
-                    {book.genre}
-                  </span>
+                <p className='text-white'>
+                  Category: <span className='font-semibold '>{book.genre}</span>
                 </p>
-                <p className='flex items-center gap-1'>
+                <p className='flex justify-center xl:justify-start items-center gap-1 text-white rounded-xl w-fit py-3 px-5 bg-dark-100'>
                   <Star className='size-5 text-yellow-500 fill-yellow-500' />
                   Rating: {book.rating}/5
                 </p>
               </div>
 
               <Button
-                className='mt-4 min-h-14 text-xl w-fit px-10 bg-primary text-dark-100 hover:bg-primary/70 cursor-pointer'
+                className='mt-6 h-12 md:min-h-14 text-base md:text-xl w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70'
                 asChild
               >
-                <Link
-                  aria-label='Go to Book details'
-                  href={`/books/${book.id}`}
-                >
-                  Go to Book
-                </Link>
+                <Link href={`/books/${book.id}`}>Go to Book</Link>
               </Button>
             </div>
 
-            {/* ========== RIGHT COVER STACK ========== */}
-
-            <div className='relative w-full md:w-[40%] xl:w-[35%] flex justify-center items-center'>
-              <div className='relative'>
-                {/* Foreground book */}
-                <BookCover
-                  coverColor={book.coverColor}
-                  coverImage={book.coverUrl}
-                  className='w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px] z-10'
-                />
-
-                {/* Blurred shadow */}
-                <div className='absolute top-4 left-4 md:top-7 md:left-10 rotate-8 opacity-25 z-0'>
+            {/* RIGHT IMAGE */}
+            <div className='relative flex justify-center items-center w-full xl:w-1/2 '>
+              <div className='group perspective relative '>
+                {/* Blurred Shadow */}
+                <div className='absolute -inset-3 md:-inset-10 blur-sm  opacity-40 left-12  md:left-30 rotate-2 rounded-xl z-0'>
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
-                    className='w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px]'
+                    className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px]  shadow-white shadow-2xl'
+                  />
+                </div>
+
+                {/* Foreground Book with 3D tilt */}
+                <div className='transform-style preserve-3d transition-transform duration-300 ease-out group-hover:-rotate-y-15 group-hover:-rotate-x-20'>
+                  <BookCover
+                    coverColor={book.coverColor}
+                    coverImage={book.coverUrl}
+                    className='relative z-10 w-[150px] h-[220px] md:w-[230px] md:h-[330px] lg:w-[280px] lg:h-[400px] xl:w-[320px] xl:h-[460px]  '
                   />
                 </div>
               </div>

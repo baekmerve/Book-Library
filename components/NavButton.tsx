@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { usePathname } from 'next/navigation'
@@ -9,12 +9,12 @@ interface Props {
 }
 
 const NavButton = ({ route, text }: Props) => {
-    const pathname = usePathname()
-    const isActive = pathname === route
+  const pathname = usePathname()
+  const isActive = pathname === route
   return (
     <Button
       asChild
-      className={`font-bebas text-2xl tracking-widest bg-transparent shadow-none hover:bg-transparent transition-all duration-300 ease-in-out text-primary ${
+      className={` font-bebas text-base sm:text-xl md:text-2xl tracking-widest bg-transparent shadow-none hover:bg-transparent transition-all duration-300 ease-in-out text-primary ${
         isActive
           ? ' underline underline-offset-8 decoration-2 decoration-soft-pink '
           : ' hover:text-soft-pink hover:scale-105'

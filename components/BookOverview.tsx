@@ -35,9 +35,9 @@ const BookOverview = ({
 
       {/* Right: Book Info */}
       <div className='w-full xl:w-[65%] flex flex-col gap-8 text-light-100'>
-        <h1 className='text-4xl md:text-5xl font-bold text-white'>{title}</h1>
+        <h1 className='text-2xl md:text-5xl font-bold text-white'>{title}</h1>
 
-        <div className='space-y-2 text-lg'>
+        <div className='space-y-2 text-sm md:text-lg'>
           <p>
             <span className='font-semibold text-primary'>Author:</span>{' '}
             <span className='text-white'>{author}</span>
@@ -57,16 +57,18 @@ const BookOverview = ({
             <span className='text-white'> {totalCopies}</span>
           </p>
           <p>
-            <span className='font-semibold text-primary'>Available to Borrow:</span>{' '}
+            <span className='font-semibold text-primary'>
+              Available to Borrow:
+            </span>{' '}
             <span className='text-white'>{availableCopies}</span>
           </p>
         </div>
 
         <div>
-          <h3 className='text-2xl font-semibold text-white mb-2'>
+          <h3 className='text-xl md:text-2xl font-semibold text-white mb-2'>
             Description
           </h3>
-          <p className='text-white leading-relaxed text-justify whitespace-pre-line'>
+          <p className='text-white text-sm md:text-lg leading-relaxed text-justify whitespace-pre-line'>
             {description}
           </p>
         </div>

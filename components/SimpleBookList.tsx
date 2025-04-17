@@ -23,7 +23,7 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
         className={cn(
           ' mt-10 flex w-full',
           horizontalScroll
-            ? ' overflow-x-auto flex-nowrap snap-x snap-mandatory scroll-pl-4 gap-10  pb-10'
+            ? ' overflow-x-auto flex-nowrap snap-x snap-mandatory md:scroll-pl-4 lg:gap-10 pb-10'
             : 'flex-wrap gap-x-2 gap-y-7 justify-center '
         )}
       >
@@ -31,20 +31,17 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
           <li
             key={book.title}
             className={cn(
-              'flex flex-col snap-start justify-start items-center text-white rounded-xl ',
-              horizontalScroll
-                ? 'h-[350px] min-w-[250px]'
-                : 'h-[350px] w-[250px]'
+              'flex flex-col snap-start justify-start items-center text-white rounded-xl h-[350px]',
+              horizontalScroll ? ' min-w-[250px]' : 'w-[250px]'
             )}
           >
-            <div className='flex flex-col items-center justify-center w-full h-[220px] relative rounded-xl overflow-hidden'>
+            <div className='flex flex-col items-center justify-center w-full relative rounded-xl  '>
               <div className='w-full h-[220px] flex items-center justify-center'>
                 <Link href={`/books/${book?.id}`}>
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
-                    className='w-[150px] h-[190px]'
-    
+                    className='w-[140px] h-[215px]'
                   />
                 </Link>
               </div>
