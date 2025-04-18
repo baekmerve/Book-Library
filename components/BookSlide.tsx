@@ -33,7 +33,7 @@ const BookSlide = ({ latestBooks }: Props) => {
     >
       {latestBooks.map((book) => (
         <SwiperSlide key={book.id}>
-          <div className='relative w-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-24 '>
+          <div className='relative w-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-24   '>
             {/* LEFT GLASS INFO */}
             <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2  items-center xl:items-start text-center xl:text-left'>
               <h1 className='text-xl md:text-3xl xl:text-5xl font-semibold text-white'>
@@ -69,12 +69,12 @@ const BookSlide = ({ latestBooks }: Props) => {
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
                     priority
-                    className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px]  shadow-white shadow-2xl'
+                    className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px]  '
                   />
                 </div>
 
                 {/* Foreground Book with 3D tilt */}
-                <div className='transform-style preserve-3d transition-transform duration-300 ease-out group-hover:-rotate-y-15 group-hover:-rotate-x-20'>
+                <div className='transform-style preserve-3d transition-transform duration-300 ease-out group-hover:-rotate-y-15 group-hover:-rotate-x-20 '>
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}

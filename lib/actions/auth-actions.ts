@@ -101,7 +101,7 @@ export const getAccountDetails = async (
   }
 
   // 2. Get all borrow records for the user (with book info)
-  const borrowRecordsWithBooks = await db
+  const RawBorrowRecords = await db
     .select({
       borrowRecord: {
         id: borrowRecords.id,
@@ -132,9 +132,19 @@ export const getAccountDetails = async (
     .leftJoin(books, eq(borrowRecords.bookId, books.id))
     .where(eq(borrowRecords.userId, userId))
 
+  // 3. Transform rating string → number
+  const TransformedRecords = RawBorrowRecords.map((record) => ({
+    ...record,
+    book: record.book
+      ? {
+          ...record.book,
+          rating: parseFloat(record.book.rating as unknown as string),
+        }
+      : undefined,
+  }))
 
   return {
     ...user[0],
-    borrowRecords: borrowRecordsWithBooks,
+    borrowRecords: TransformedRecords,
   }
 }

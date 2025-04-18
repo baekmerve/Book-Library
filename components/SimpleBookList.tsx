@@ -21,18 +21,18 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
 
       <ul
         className={cn(
-          ' mt-10 flex w-full',
+          ' mt-10 flex w-full ',
           horizontalScroll
-            ? ' overflow-x-auto flex-nowrap snap-x snap-mandatory md:scroll-pl-4 lg:gap-10 pb-10'
-            : 'flex-wrap gap-x-2 gap-y-7 justify-center '
+            ? ' overflow-x-auto flex-nowrap snap-x snap-mandatory  md:scroll-pl-4 lg:gap-10 py-5 '
+            : 'flex-wrap gap-7 justify-center '
         )}
       >
         {books.map((book) => (
           <li
             key={book.title}
             className={cn(
-              'flex flex-col snap-start justify-start items-center text-white rounded-xl h-[350px]',
-              horizontalScroll ? ' min-w-[250px]' : 'w-[250px]'
+              'flex flex-col snap-start justify-start items-center  text-white rounded-xl min-h-[320px] hover:-translate-y-4 transition-all duration-300 ease-in-out ',
+              horizontalScroll ? ' min-w-[200px] ' : 'w-[200px]'
             )}
           >
             <div className='flex flex-col items-center justify-center w-full relative rounded-xl  '>

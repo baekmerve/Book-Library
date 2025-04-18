@@ -42,7 +42,7 @@ export const borrowBook = async (bookId: string, userId: string) => {
     const record = await db
       .insert(borrowRecords)
       .values({ userId, bookId, dueDate, status: 'BORROWED' })
-      .returning() //can we removed
+      .returning()
 
     // 5. Update available copies
     await db
@@ -146,7 +146,14 @@ export const fetchAllBooks = async (): Promise<Book[]> => {
       .select()
       .from(books)
       .orderBy(desc(books.createdAt))
-    return bookList
+
+    // Convert rating from string to number
+    const transformedBooks = bookList.map((book) => ({
+      ...book,
+      rating: parseFloat(book.rating as unknown as string),
+    }))
+
+    return transformedBooks
   } catch (error) {
     console.log('🚀 - fetchAllBooks - error:', error)
     throw new Error('Failed to fetch book list.')
@@ -160,7 +167,15 @@ export const fetchBookById = async (bookId: string): Promise<Book | null> => {
       .from(books)
       .where(eq(books.id, bookId))
       .limit(1)
-    return book[0]
+
+    if (!book.length) return null
+
+    const transformedBook = {
+      ...book[0],
+      rating: parseFloat(book[0].rating as unknown as string),
+    }
+
+    return transformedBook
   } catch (error) {
     console.log('🚀 - fetchBookById - error:', error)
     throw new Error('Failed to fetch the book.')
@@ -175,7 +190,13 @@ export const fetchLatestBooks = async (): Promise<Book[]> => {
       .limit(10)
       .orderBy(desc(books.createdAt))
 
-    return latestBooks
+    // Convert rating from string to number
+    const transformedBooks = latestBooks.map((book) => ({
+      ...book,
+      rating: parseFloat(book.rating as unknown as string),
+    }))
+
+    return transformedBooks
   } catch (error) {
     console.log('🚀 - fetchLatestBooks - error:', error)
     throw new Error('Failed to fetch the newly added books.')
@@ -197,7 +218,13 @@ export const fetchBookByKeyword = async (
     )
     .orderBy(desc(books.createdAt))
 
-  return bookList
+  // Convert rating from string to number
+  const transformedBooks = bookList.map((book) => ({
+    ...book,
+    rating: parseFloat(book.rating as unknown as string),
+  }))
+
+  return transformedBooks
 }
 
 export const fetchSimilarBook = async (
@@ -216,7 +243,14 @@ export const fetchSimilarBook = async (
       )
       .orderBy(sql`RANDOM()`)
       .limit(6)
-    return bookList
+
+    // Convert rating from string to number
+    const transformedBooks = bookList.map((book) => ({
+      ...book,
+      rating: parseFloat(book.rating as unknown as string),
+    }))
+
+    return transformedBooks
   } catch (error) {
     console.error('🚀 - error:', error)
     throw new Error('Failed to fetch similar books.')

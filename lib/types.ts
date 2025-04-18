@@ -52,7 +52,7 @@ export interface BorrowRecord {
 
 export type BorrowedBookType = {
   borrowRecord: BorrowRecord
-  book: Book | null
+  book?: Book
 }
 
 export type UserAccountType = User & {
