@@ -68,6 +68,7 @@ const BookSlide = ({ latestBooks }: Props) => {
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
+                    priority
                     className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px]  shadow-white shadow-2xl'
                   />
                 </div>
@@ -77,6 +78,7 @@ const BookSlide = ({ latestBooks }: Props) => {
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
+                    priority
                     className='relative z-10 w-[150px] h-[220px] md:w-[230px] md:h-[330px] lg:w-[280px] lg:h-[400px] xl:w-[320px] xl:h-[460px]  '
                   />
                 </div>

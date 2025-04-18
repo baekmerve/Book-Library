@@ -6,12 +6,14 @@ interface Props {
   className?: string
   coverColor: string
   coverImage: string
+  priority?: boolean 
 }
 
 const BookCover = ({
   className,
   coverColor = '#012B48',
   coverImage = 'https://placehold.co/400x600.png',
+  priority = false,
 }: Props) => {
   return (
     <div
@@ -30,7 +32,8 @@ const BookCover = ({
           alt='Default book cover image'
           fill
           className='rounded-sm object-cover'
-          loading='lazy'
+          loading={priority ? undefined : 'lazy'}
+          priority={priority}
         />
       </div>
     </div>
