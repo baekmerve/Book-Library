@@ -124,7 +124,6 @@ export const getAccountDetails = async (
         availableCopies: books.availableCopies,
         description: books.description,
         summary: books.summary,
-        videoUrl: books.videoUrl,
         createdAt: books.createdAt,
       },
     })

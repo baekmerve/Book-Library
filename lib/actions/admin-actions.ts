@@ -11,6 +11,8 @@ export const createBook = async (params: BookParams) => {
       .values({
         ...params,
         availableCopies: params.totalCopies,
+
+        rating: params.rating.toFixed(1), //ensures  sending a string with 1 decimal place (as required by numeric(2,1))
       })
       .returning()
 

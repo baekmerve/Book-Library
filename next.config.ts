@@ -8,14 +8,15 @@ const nextConfig: NextConfig = {
         hostname: 'm.media-amazon.com',
         port: '',
       },
+     
       {
         protocol: 'https',
-        hostname: 'ik.imagekit.io',
+        hostname: 'placehold.co',
         port: '',
       },
       {
         protocol: 'https',
-        hostname: 'placehold.co',
+        hostname: 'i.ebayimg.com',
         port: '',
       },
     ],

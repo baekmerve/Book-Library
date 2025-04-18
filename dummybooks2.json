@@ -1,30 +1,16 @@
 [
   {
-    "id": "9084986f-456c-449b-ae6e-59ef1f26b129",
-    "title": "CSS in Depth",
-    "author": "Keith J. Grant",
-    "genre": "Web Development",
-    "rating": 4,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_zIgYlIxcY.png",
-    "coverColor": "#1e2a4b",
-    "description": "CSS in Depth by Keith J. Grant is a comprehensive guide for web developers who want to go beyond the basics of CSS and master the intricacies of styling web pages. The book is designed for intermediate to advanced developers who are already familiar with CSS but want to deepen their understanding and leverage its full potential.",
-    "totalCopies": 18,
-    "availableCopies": 16,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
-    "summary": "CSS in Depth starts by reviewing the basic principles of CSS, then quickly moves on to more advanced concepts. Grant emphasizes the importance of understanding the underlying mechanics of CSS properties like layout, box model, and positioning. Readers learn how to use these tools more effectively, making their code more predictable and easier to debug.\n\nThe book dedicates significant time to discussing modern layout systems, especially Flexbox and CSS Grid. These powerful tools enable developers to create complex, responsive designs with minimal code. Grant explains how to use them in different contexts, providing practical examples of when and why they are useful.\n\nOne of the book’s highlights is its in-depth coverage of animations and transitions. Readers learn how to add dynamic effects to their web pages without relying on JavaScript. This is especially useful for creating smooth, interactive designs that improve user experience.\n\nThe book also discusses CSS preprocessors and methodologies like BEM (Block Element Modifier), teaching developers how to structure their stylesheets for larger projects. Grant encourages best practices such as keeping CSS DRY (Don’t Repeat Yourself) and modularizing code.\n\nBy the end of the book, readers will have the knowledge and confidence to tackle complex CSS challenges and create stunning web interfaces with efficiency and elegance."
-  },
-  {
     "id": "350c3bc8-a5cc-45a3-ba16-97b93ed056b0",
     "title": "HTML and CSS: Design and Build Websites",
     "author": "Jon Duckett",
     "genre": "Web Development",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_1pCoBDI11.png",
+    "rating": 4.7,
+    "coverUrl": "/images/bookCover/HTMLCSS.svg",
     "coverColor": "#3a2931",
     "description": "Whether you’re a complete beginner or someone looking to brush up on HTML and CSS, this book provides a solid foundation and practical skills that can be applied immediately to real-world projects.",
     "totalCopies": 45,
     "availableCopies": 45,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_MONyhmpr4V.png",
+
     "summary": "HTML and CSS: Design and Build Websites starts with an introduction to HTML, covering the basic building blocks of a webpage, including elements like headings, paragraphs, links, and images. Duckett carefully explains the structure and syntax of HTML, teaching readers how to write and organize their code.\n\nThe book then transitions to CSS, showing readers how to apply styles to their HTML elements. Topics such as fonts, colors, borders, padding, and margins are introduced in clear, easy-to-understand terms. Duckett uses plenty of visual examples to help readers see the immediate impact of the styles they apply.\n\nAs the book progresses, readers dive deeper into layout techniques, learning about the box model, positioning, floats, and flexible layouts with CSS Flexbox. The concept of responsive design is also covered, teaching readers how to make their websites adapt to different screen sizes and devices.\n\nThroughout, the book is full of practical tips and techniques to create beautiful, functional websites. Duckett’s clear explanations and colorful layout make complex topics easier to understand, making this book a perfect guide for anyone starting their web development journey."
   },
   {
@@ -32,13 +18,13 @@
     "title": "System Design Interview",
     "author": "Alex Xu",
     "genre": "System Design",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_CmVaNeXrQ.png",
+    "rating": 4.6,
+    "coverUrl": "/images/bookCover/systemDesign.svg",
     "coverColor": "#363b63",
     "description": "System Design Interview: An Insider's Guide by Alex Xu is a must-read for software engineers and professionals preparing for system design interviews. The book provides a detailed overview of the principles and techniques needed to excel in system design interviews, which are often a key part of the hiring process at top tech companies.",
     "totalCopies": 10,
     "availableCopies": 10,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_x_vGP6M7Y.png",
+
     "summary": "System Design Interview: An Insider's Guide begins by introducing the key concepts of system design, emphasizing the importance of understanding requirements, scalability, and reliability. Xu explains how to approach an open-ended problem by breaking it down into smaller, manageable components, ensuring a structured response.\n\nThe book covers essential topics, such as database design, caching, load balancing, and message queues, explaining their relevance in building scalable and fault-tolerant systems. Xu also delves into the intricacies of designing high-availability systems, explaining concepts like replication, partitioning, and sharding.\n\nReaders are guided through various real-world system design problems, from designing a URL shortening service to building a recommendation system. Each example provides a deep dive into the trade-offs involved, offering valuable insights into how to optimize systems for performance, cost, and maintainability.\n\nXu also emphasizes the importance of communication during system design interviews, teaching readers how to present their solutions clearly and justify their decisions. With practice problems and tips on handling tough interview questions, the book is an essential resource for anyone looking to ace a system design interview."
   },
   {
@@ -46,57 +32,42 @@
     "title": "Computer Science Distilled",
     "author": "Wladston Ferreira Filho",
     "genre": "Computer Science",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_ZRyGl0A75A.png",
+    "rating": 4.5,
+    "coverUrl": "/images/bookCover/computerScience.svg",
     "coverColor": "#73d173",
     "description": "Computer Science Distilled by Wladston Ferreira Filho is a concise and approachable introduction to the core concepts of computer science. Designed for beginners and those looking to strengthen their problem-solving skills, the book breaks down complex topics into digestible, easy-to-understand pieces.",
     "totalCopies": 89,
     "availableCopies": 87,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_W6XGeHaEO.png",
+
     "summary": "Computer Science Distilled begins by explaining the art of problem-solving in computing, emphasizing the importance of breaking down problems into manageable parts. It introduces key computational concepts such as abstraction, algorithms, and complexity analysis, providing a strong foundation for tackling any programming challenge.\n\nThe book explores data structures, including arrays, linked lists, stacks, queues, and trees, with clear explanations and visual aids to make these abstract concepts tangible. Readers learn how to select the right data structure for different scenarios, enhancing the efficiency of their solutions.\n\nLogical reasoning and algorithm design are central themes. The author delves into sorting, searching, and recursion, presenting these topics in an accessible way. He also highlights the importance of trade-offs in algorithm design, such as time versus space complexity.\n\nLater chapters focus on practical problem-solving techniques, encouraging readers to approach challenges creatively while maintaining computational efficiency. The book includes exercises to reinforce learning, making it highly interactive.\n\nBy the end, readers gain a solid grasp of computer science fundamentals, enabling them to write better programs and think like problem solvers. Its concise format ensures clarity and retention without overwhelming the reader."
   },
-  {
-    "id": "dc73abc1-8699-4e0a-91b0-a67e80292b9c",
-    "title": "The Art of Assembly Language",
-    "author": "Randall Hyde",
-    "genre": "Programming",
-    "rating": 3,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_lZrAopUNM.png",
-    "coverColor": "#fff9bf",
-    "description": "The Art of Assembly Language by Randall Hyde is a comprehensive and engaging introduction to assembly language programming. Known for its clarity and depth, the book provides readers with a solid foundation in low-level programming concepts, which are essential for understanding how computers operate at their core.",
-    "totalCopies": 78,
-    "availableCopies": 78,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_VGtFawJik.png",
-    "summary": "The Art of Assembly Language introduces readers to the fundamentals of assembly programming, beginning with an overview of computer architecture. It explains how CPUs process instructions and manage data, providing the necessary background to appreciate the power of assembly language.\n\nThe book then transitions into practical programming, starting with data representation and memory management. Readers learn how integers, floating-point numbers, and other data types are stored and manipulated at the binary level. Hyde uses HLA as a bridge, making assembly language concepts easier to grasp while maintaining a focus on the underlying principles.\n\nControl structures, including loops, conditionals, and functions, are explained in detail. Hyde shows how these elements work in assembly, offering a deeper understanding of how high-level languages translate into machine code.\n\nAdvanced topics include optimization techniques, hardware interactions, and system-level programming. The book explores how assembly can be used to fine-tune performance-critical applications and interact directly with hardware components.\n\nThroughout, the emphasis is on clarity and practical application. The book includes numerous exercises, real-world examples, and detailed explanations, making it a valuable resource for anyone looking to master assembly language or gain deeper insights into computer operations."
-  },
+
   {
     "id": "17a58b62-0258-45a5-8b8b-9a21a6d6630c",
     "title": "Seriously Good Software",
     "author": "Marco Faella",
     "genre": "Programming",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_YiFXdp5P_T.png",
+    "rating": 3.9,
+    "coverUrl": "/images/bookCover/seriously.svg",
     "coverColor": "#061e20",
     "description": "This book is perfect for developers who want to elevate their coding skills beyond functionality, making their work robust and professional. Written in an accessible style, Seriously Good Software bridges the gap between theoretical principles and practical application.",
     "totalCopies": 45,
     "availableCopies": 45,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_LhwRi_a9cJ.png",
+
     "summary": "Seriously Good Software starts by exploring the core principles of software development, emphasizing the importance of correctness—software must function as intended under all specified conditions. Faella uses clear examples to show how to identify and fix errors that might compromise the correctness of code.\n\nThe book progresses to readability, highlighting how clean, well-documented code improves collaboration and reduces maintenance costs. Developers learn techniques to refactor code for better readability without compromising functionality.\n\nPerformance and scalability are addressed with practical tips on optimizing code to handle increasing workloads and adapt to growth. Faella explains how to use profiling tools, optimize algorithms, and make trade-offs to enhance efficiency.\n\nSecurity is another key focus, with the book covering techniques to protect software from vulnerabilities and potential attacks. Maintainability rounds out the discussion, teaching developers how to write modular, testable code that adapts to future changes.\n\nThroughout, Seriously Good Software balances theory with hands-on examples, encouraging developers to apply best practices in their projects. With its emphasis on professionalism and long-term thinking, the book equips readers to create software that not only works but thrives."
   },
-
-
   {
     "id": "fe03e013-53b8-4574-9ca8-caec69a9b16c",
     "title": "Algorithms",
     "author": "Robert Sedgewick and Kevin Wayne",
     "genre": "Computer Science",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_dr-f_LPwA.png",
+    "rating": 3.7,
+    "coverUrl": "/images/bookCover/algorithms.svg",
     "coverColor": "#bf1e2e",
     "description": "Algorithms by Robert Sedgewick and Kevin Wayne is a comprehensive and authoritative guide to understanding algorithms and their role in modern computing. Widely regarded as a foundational text in computer science, the book covers a vast array of algorithms, ranging from sorting and searching to graph processing and string manipulation.",
     "totalCopies": 321,
     "availableCopies": 318,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_KSZGUHg5R.png",
+
     "summary": "Algorithms is a thorough exploration of algorithmic principles and their applications. It begins with the basics, introducing elementary algorithms like sorting and searching. These foundational topics are covered in-depth, explaining their importance in handling data efficiently and effectively.\n\nThe book then progresses to more complex topics, such as graph algorithms and string processing. Graph processing, for instance, is explained with practical use cases like network connectivity, shortest paths, and spanning trees. Similarly, string algorithms address challenges in pattern matching and text analysis, offering insights into their relevance in fields like bioinformatics and search engines.\n\nThroughout the book, the authors emphasize the design and analysis of algorithms. They focus on efficiency and scalability, equipping readers with the tools to evaluate performance and choose appropriate algorithms for specific tasks.\n\nPractical implementation is a major focus, with the authors providing code examples and exercises that reinforce learning. The book strikes a balance between theory and practice, ensuring readers gain both conceptual knowledge and hands-on skills to solve real-world problems effectively."
   },
   {
@@ -104,56 +75,41 @@
     "title": "The Clean Coder",
     "author": "Robert C. Martin",
     "genre": "Software",
-    "rating": 4,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_EE5klEyX0.png",
+    "rating": 4.2,
+    "coverUrl": "/images/bookCover/cleanCoder.svg",
     "coverColor": "#060709",
     "description": "The Clean Coder by Robert C. Martin is an essential guide for software developers who aspire to reach the highest standards of professionalism. Written by one of the most respected figures in the software engineering community, this book transcends technical skills, focusing on the mindset, ethics, and practices that define a professional programmer.",
     "totalCopies": 35,
     "availableCopies": 35,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_50K9AmWND.png",
+
     "summary": "The Clean Coder delves into the principles and practices of professional software development. The book begins by defining what it means to be a professional programmer, emphasizing the importance of taking responsibility for your work and acting with integrity. Martin highlights how professionalism goes beyond technical ability and requires a commitment to quality, discipline, and effective communication.\n\nA key focus of the book is mastering essential soft skills, such as time management and the art of saying “no.” Martin provides practical guidance for handling unrealistic expectations, prioritizing tasks, and maintaining a healthy work-life balance. Through engaging anecdotes, he explains how developers can balance their personal and professional lives while delivering consistent value to clients and stakeholders.\n\nThe book also underscores the significance of rigorous testing, clean coding practices, and continuous learning. Martin shares tips on writing better tests, debugging code efficiently, and dealing with stressful situations like tight deadlines and unexpected errors.\n\nFinally, The Clean Coder encourages developers to cultivate a mindset of lifelong learning and self-improvement. It serves as both a guide and an inspiration for developers to achieve excellence, not only in their technical skills but also in their conduct as professionals."
   },
- 
   {
     "id": "68f7c183-b995-4ba3-a644-30110ebb932e",
     "title": "Atomic Habits",
     "author": "James Clear",
     "genre": "Self Help",
-    "rating": 5,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_HOCexO5Ms.png",
+    "rating": 4.8,
+    "coverUrl": "/images/bookCover/atomicHabits.svg",
     "coverColor": "#ffffff",
     "description": "Atomic Habits by James Clear is a book about how small changes in daily habits can lead to significant transformations over time. Clear emphasizes that habits are the compound interest of self-improvement—tiny actions repeated consistently will eventually produce remarkable results.",
     "totalCopies": 1200,
     "availableCopies": 1200,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_WyfBbHfTp.png",
+
     "summary": "Atomic Habits by James Clear is a book about how small changes in daily habits can lead to significant transformations over time. Clear emphasizes that habits are the compound interest of self-improvement—tiny actions repeated consistently will eventually produce remarkable results. \n\nRather than focusing on massive overhauls, the book encourages readers to aim for a 1% improvement each day, as these incremental gains accumulate to create meaningful progress.\n\nThe book introduces the \"Four Laws of Behavior Change\" as a framework for building good habits and breaking bad ones. These laws are: make it obvious, make it attractive, make it easy, and make it satisfying. Clear explains how these principles can be applied to rewire habits by adjusting cues, cravings, responses, and rewards. For instance, placing a water bottle on your desk makes drinking water more obvious and accessible, increasing the likelihood of forming a healthy hydration habit.\n\nA key insight in the book is the role of identity in shaping habits. Clear argues that lasting change comes when you focus on who you want to become rather than what you want to achieve. For example, instead of saying, \"I want to read more,\" you could say, \"I am the type of person who loves learning.\" By aligning your habits with your identity, you create a sustainable foundation for growth.\n\nThe environment also plays a critical role in habit formation. Clear emphasizes the importance of designing your surroundings to make good habits easier and bad habits harder. Simple changes, like keeping healthy snacks visible or removing distractions from your workspace, can have a profound impact on your behavior.\n\nUltimately, Atomic Habits is a reminder that success is not about huge leaps but about the small, consistent steps we take every day. By focusing on systems and making intentional adjustments, anyone can create lasting, positive changes in their life."
-  },
-  {
-    "id": "b6b9cc5d-95fd-488e-b1df-2a805678b430",
-    "title": "React in Action",
-    "author": "Mark Tielens Thomas",
-    "genre": "Web Development",
-    "rating": 4,
-    "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_rzjr6TrKF.png",
-    "coverColor": "#302428",
-    "description": "React in Action by Mark Tielens Thomas is a practical guide to mastering React, a popular JavaScript library for building user interfaces. The book is ideal for developers looking to learn React from the ground up and for those seeking to deepen their understanding of its ecosystem.",
-    "totalCopies": 57,
-    "availableCopies": 57,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_jO3MUj8-s.png",
-    "summary": "React in Action by Mark Tielens Thomas is a practical guide to mastering React, a popular JavaScript library for building user interfaces. The book is ideal for developers looking to learn React from the ground up and for those seeking to deepen their understanding of its ecosystem. With clear explanations and hands-on examples, it equips readers to build dynamic and interactive web applications.\n\nThe book starts by introducing the fundamentals of React, including components, JSX, props, and state management. It then explores more advanced topics, such as lifecycle methods, hooks, and performance optimization. A key focus is on the declarative nature of React and how it simplifies building complex user interfaces.\n\nReaders are guided through creating real-world applications, gaining experience with essential tools like Redux for state management, React Router for navigation, and testing frameworks like Jest and Enzyme. The book also addresses integrating React with backend services, ensuring a complete understanding of building full-stack applications.\n\nOne of the standout features of React in Action is its emphasis on modern development practices. It introduces readers to best practices for component architecture, reusable design, and effective debugging. By the end of the book, developers will have the confidence to tackle React projects with a solid foundation."
   },
   {
     "id": "72b7fe29-5a8b-4f1d-9f87-d0c03bba12f4",
     "title": "The Midnight Library",
     "author": "Matt Haig",
     "genre": "Fiction",
-    "rating": 4,
-    "coverUrl": "https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9781786892737.jpg",
+    "rating": 3.7,
+    "coverUrl": "/images/bookCover/theMidnight.svg",
     "coverColor": "#001f60",
     "description": "Between life and death there is a library. In The Midnight Library, Matt Haig explores the choices that go into a life well lived, through the story of Nora Seed who gets to try out different versions of her life to find the one worth living.",
     "totalCopies": 20,
     "availableCopies": 18,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "Nora Seed finds herself in the Midnight Library, where each book contains a different life she could have lived. As she browses through these lives — the career she gave up, the people she didn't marry, the friends she left behind — she must decide what is truly fulfilling. The novel offers a rich exploration of regret, hope, and the endless possibilities that life holds."
   },
   {
@@ -161,13 +117,13 @@
     "title": "It Ends With Us",
     "author": "Colleen Hoover",
     "genre": "Romance",
-    "rating": 5,
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/e/e4/It_Ends_with_Us_%28Colleen_Hoover%29.png",
+    "rating": 4.8,
+    "coverUrl": "/images/bookCover/itEndsWithUs.svg",
     "coverColor": "#dabea9",
     "description": "A deeply emotional romance novel that tells the story of Lily Bloom and her journey of love, resilience, and tough decisions.",
     "totalCopies": 30,
     "availableCopies": 27,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "Lily has always worked hard for the life she wants. After moving to Boston, she meets Ryle — assertive, stubborn, maybe even a little arrogant. But Ryle has a soft side, and Lily falls hard. When her first love reappears, everything she’s built starts to crack. Colleen Hoover weaves a compelling story of strength and survival, asking where the line between love and pain truly lies."
   },
   {
@@ -175,13 +131,13 @@
     "title": "The Silent Patient",
     "author": "Alex Michaelides",
     "genre": "Thriller",
-    "rating": 4,
-    "coverUrl": "https://m.media-amazon.com/images/I/81JJPDNlxSL.jpg",
+    "rating": 3.5,
+    "coverUrl": "/images/bookCover/silent.svg",
     "coverColor": "#05697c",
     "description": "A psychological thriller centered on a woman’s act of violence against her husband—and the therapist obsessed with uncovering her motive.",
     "totalCopies": 25,
     "availableCopies": 21,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "Alicia Berenson’s life seems perfect—until she shoots her husband five times in the face and never speaks another word. Her refusal to talk turns a domestic tragedy into something far more mysterious. Theo Faber, a criminal psychotherapist, becomes obsessed with unraveling her silence. As he digs into her past, shocking secrets emerge in this gripping, twist-filled novel."
   },
   {
@@ -189,43 +145,41 @@
     "title": "A Court of Thorns and Roses",
     "author": "Sarah J. Maas",
     "genre": "Fantasy",
-    "rating": 4,
-    "coverUrl": "https://m.media-amazon.com/images/I/81Jh+B3M27L._AC_UF894,1000_QL80_.jpg",
+    "rating": 3.8,
+    "coverUrl": "/images/bookCover/court.svg",
     "coverColor": "#f13941",
     "description": "A lush fantasy tale of a mortal girl who is taken to the fae lands as punishment and ends up at the center of a deadly, magical conflict.",
     "totalCopies": 40,
     "availableCopies": 38,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "When nineteen-year-old huntress Feyre kills a wolf in the woods, a beast-like creature demands retribution. She is dragged to a treacherous magical land and discovers her captor is a faerie. As she dwells in his estate, her feelings shift, and she learns that the fae realm is far more dangerous than she ever imagined. Sarah J. Maas crafts an enthralling blend of romance, action, and fae magic."
   },
-
   {
     "id": "b2c3d4e5-f6a7-8901-bcde-2345678901bc",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
     "genre": "Classic Literature",
-    "rating": 4,
-    "coverUrl": "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
+    "rating": 4.2,
+    "coverUrl": "/images/bookCover/greatGatsby.svg",
     "coverColor": "#2b4e8d",
     "description": "The Great Gatsby is a novel about the American dream and the roaring twenties, focusing on the mysterious millionaire Jay Gatsby and his obsession with the beautiful former debutante Daisy Buchanan.",
     "totalCopies": 25,
     "availableCopies": 20,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "Through the eyes of narrator Nick Carraway, the novel explores themes of decadence, idealism, resistance to change, social upheaval, and excess, creating a portrait of the Jazz Age or the Roaring Twenties in the United States."
   },
-
   {
     "id": "c89c39d1-858d-4b0f-b56d-b34ac74ab5d7",
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "genre": "Fiction",
-    "rating": 3,
-    "coverUrl": "https://i.ebayimg.com/images/g/1AgAAOSw5ORksAj6/s-l1200.jpg",
+    "rating": 4.4,
+    "coverUrl": "/images/bookCover/Thealchemist.svg",
     "coverColor": "#de4821",
     "description": "The Alchemist by Paulo Coelho is a powerful tale about following your dreams, the importance of perseverance, and self-discovery. It follows the journey of a young shepherd named Santiago as he embarks on a quest to find treasure, discovering much more along the way.",
     "totalCopies": 50,
     "availableCopies": 48,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
+
     "summary": "The Alchemist is a philosophical novel that explores themes of destiny, dreams, and the importance of living in harmony with the world. Santiago's journey is filled with challenges and valuable lessons that ultimately guide him toward achieving his personal legend, the purpose that drives his life. The story emphasizes the importance of following one's heart and trusting the universe."
   },
   {
@@ -233,13 +187,12 @@
     "title": "Sapiens: A Brief History of Humankind",
     "author": "Yuval Noah Harari",
     "genre": "History",
-    "rating": 5,
-    "coverUrl": "https://i.ebayimg.com/images/g/i9wAAOSw0Ahkne~q/s-l1200.jpg",
+    "rating": 4.6,
+    "coverUrl": "/images/bookCover/sapiens.svg",
     "coverColor": "#fdfcfa",
     "description": "Sapiens by Yuval Noah Harari is a groundbreaking and thought-provoking exploration of the history of humankind, tracing the journey of Homo sapiens from insignificant apes to rulers of the world. Harari combines history, biology, anthropology, and economics to unravel how humans evolved over the past 70,000 years—from the Cognitive Revolution that allowed us to imagine myths and cooperate in large groups, to the Agricultural Revolution that reshaped societies, and the Scientific Revolution that set us on a path to unprecedented power and progress",
     "totalCopies": 100,
     "availableCopies": 80,
-    "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
     "summary": "Sapiens: A Brief History of Humankind is a profound and thought-provoking book that invites readers to rethink the conventional narrative of human history. Written by Yuval Noah Harari, the book takes us on a sweeping journey through the evolution of Homo sapiens, starting from the earliest days when we shared the planet with other human species, to our rise as the dominant force on Earth. Harari explores the major turning points in our development, such as the Cognitive Revolution, which allowed early humans to communicate complex ideas and form larger, more organized societies; the Agricultural Revolution, which fundamentally transformed human relationships with the environment; and the Scientific Revolution, which propelled us into an era of technological advancement and global exploration.\n\nThroughout the book, Harari emphasizes how biology, sociology, and economics have played pivotal roles in shaping human history and how our capacity for cooperation, culture, and the creation of shared myths and ideologies have enabled us to build complex civilizations. He examines the ways in which our ancestors’ decisions, often driven by the pursuit of power, resources, and survival, have had far-reaching consequences for not only humans but also for other species and the planet as a whole.\n\nThe book also delves into controversial questions about humanity's current trajectory, raising deep philosophical inquiries about what it means to be human and the ethical implications of our actions. Harari explores topics like the rise of capitalism, the role of religion, the concept of happiness, and the future of human evolution in light of new technologies such as genetic engineering and artificial intelligence."
   }
 ]

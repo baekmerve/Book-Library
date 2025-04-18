@@ -1,5 +1,5 @@
-import ImageKit from 'imagekit'
-import dummyBooks from '../dummybooks.json'
+
+import dummyBooks2 from '../dummybooks2.json'
 
 import { books } from './schema'
 import { neon } from '@neondatabase/serverless'
@@ -11,49 +11,14 @@ config({ path: '.env.local' })
 const sql = neon(process.env.DATABASE_URL!)
 export const db = drizzle({ client: sql })
 
-const imageKit = new ImageKit({
-  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
-  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
-})
-
-const uploadToImageKit = async (
-  url: string,
-  fileName: string,
-  folder: string
-) => {
-  try {
-    const response = await imageKit.upload({
-      file: url,
-      fileName,
-      folder,
-    })
-    return response.filePath
-  } catch (error) {
-    console.error('🚀 - uploadToImageKit error:', error)
-  }
-}
 const seed = async () => {
   console.log('starting seed the data')
 
   try {
-    for (const book of dummyBooks) {
-      const coverUrl = (await uploadToImageKit(
-        book.coverUrl,
-        `${book.title}.jpg`,
-        '/books/covers'
-      )) as string
-
-      const videoUrl = (await uploadToImageKit(
-        book.videoUrl,
-        `${book.title}.mp4`,
-        '/books/videos'
-      )) as string
-
+    for (const book of dummyBooks2) {
       await db.insert(books).values({
         ...book,
-        coverUrl,
-        videoUrl,
+        rating: book.rating.toFixed(1),
       })
     }
     console.log('Data seeded successfully')

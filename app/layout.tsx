@@ -43,9 +43,6 @@ const bebas = localFont({
 export const metadata: Metadata = {
   title: 'Book Library',
   description: 'A Book Library website',
-  other: {
-    preconnect: 'https://ik.imagekit.io',
-  },
 }
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {

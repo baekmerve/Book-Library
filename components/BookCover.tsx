@@ -1,9 +1,6 @@
-'use client'
-
 import { cn } from '@/lib/utils'
 import BookCoverSvg from './BookCoverSvg'
-import { IKImage } from 'imagekitio-next'
-import config from '@/lib/config'
+import Image from 'next/image'
 
 interface Props {
   className?: string
@@ -28,14 +25,12 @@ const BookCover = ({
         className='absolute z-10'
         style={{ left: '12%', width: '87.5%', height: '87%' }}
       >
-        <IKImage
-          path={coverImage}
-          urlEndpoint={config.env.imagekit.urlEndpoint}
+        <Image
+          src={coverImage}
           alt='Default book cover image'
           fill
           className='rounded-sm object-cover'
           loading='lazy'
-          lqip={{ active: true }}
         />
       </div>
     </div>

@@ -8,16 +8,19 @@ import { z } from 'zod'
 import { Form } from '../ui/form'
 import { Input } from '../ui/input'
 import ColorPicker from './ColorPicker'
-import FileUpload from '../FileUpload'
+
 import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
 import { FormFieldWrapper } from './FormFieldWrapper'
 import { createBook } from '@/lib/actions/admin-actions'
 import { toast } from 'sonner'
+import FileUpload from './FileUpload'
+
 
 interface Props extends Partial<Book> {
   type: 'create' | 'update'
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BookForm = ({ type }: Props) => {
   const router = useRouter()
 
@@ -28,11 +31,10 @@ const BookForm = ({ type }: Props) => {
       description: '',
       author: '',
       genre: '',
-      rating: 1,
+      rating: 1.0,
       totalCopies: 1,
       coverUrl: '',
       coverColor: '',
-      videoUrl: '',
       summary: '',
     },
   })
@@ -128,15 +130,7 @@ const BookForm = ({ type }: Props) => {
           label='Book Image'
         >
           {(field) => (
-            <FileUpload
-              type='image'
-              accept='image/*' //all image types
-              placeholder='Upload a book cover'
-              folder='books/covers'
-              variant='light' //admin dashboard
-              onFileChange={field.onChange}
-              value={field.value}
-            />
+            <FileUpload onFileChange={field.onChange} value={field.value} />
           )}
         </FormFieldWrapper>
 
@@ -161,24 +155,6 @@ const BookForm = ({ type }: Props) => {
               {...field}
               rows={10}
               className='h-52 book-form_input '
-            />
-          )}
-        </FormFieldWrapper>
-
-        <FormFieldWrapper
-          control={form.control}
-          name='videoUrl'
-          label='Book Trailer'
-        >
-          {(field) => (
-            <FileUpload
-              type='video'
-              accept='video/*'
-              placeholder='Upload a book trailer'
-              folder='books/videos'
-              variant='light'
-              onFileChange={field.onChange}
-              value={field.value}
             />
           )}
         </FormFieldWrapper>

@@ -9,7 +9,6 @@ export interface Book {
   description: string
   coverColor: string
   coverUrl: string
-  videoUrl?: string | null
   summary: string
   createdAt: Date | null
 }
@@ -23,7 +22,6 @@ export interface BookParams {
   coverColor: string
   description: string
   totalCopies: number
-  videoUrl?: string
   summary: string
 }
 
