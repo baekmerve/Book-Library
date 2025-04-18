@@ -29,7 +29,7 @@ const ProfileCard = ({ userName, email, accountDetails }: Props) => {
       </div>
 
       <div className='space-y-3 text-white'>
-        <h1 className='font-bebas text-2xl text-light-100 border-b-2 border-soft-pink pb-2'>
+        <h1 className='font-poetsen text-2xl text-light-100 border-b-2 border-soft-pink pb-2'>
           Account Details
         </h1>
         <p className='book_card'>

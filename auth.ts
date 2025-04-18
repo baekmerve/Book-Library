@@ -1,3 +1,6 @@
+
+export const runtime = 'nodejs'
+
 import CredentialsProvider from 'next-auth/providers/credentials'
 import NextAuth, { User } from 'next-auth'
 import { db } from './database/drizzle'

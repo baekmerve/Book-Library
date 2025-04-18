@@ -51,7 +51,7 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className='flex flex-col gap-10 w-full xl:w-1/2 '>
           {/* Book Summary */}
           <section className='flex flex-col gap-4'>
-            <h3 className='text-base md:text-xl font-semibold text-primary'>
+            <h3 className='text-lg md:text-3xl  font-poetsen text-primary'>
               Book Summary
             </h3>
             <div className='space-y-4  text-sm md:text-lg text-light-100 leading-relaxed'>

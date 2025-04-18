@@ -23,7 +23,7 @@ const ProfileBooksSection = ({
 }: BookListSectionProps) => {
   return (
     <section className='w-full flex flex-col p-4 rounded-xl'>
-      <h2 className='font-bebas text-2xl md:text-3xl text-light-100 tracking-wider text-center xl:text-left'>
+      <h2 className='font-poetsen text-2xl md:text-3xl text-light-100 tracking-normal text-center xl:text-left'>
         {title}
       </h2>
 

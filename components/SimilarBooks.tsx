@@ -14,7 +14,7 @@ const SimilarBooks = async ({ genre, bookId }: Props) => {
   if (!similarBookList?.length) return null
   return (
     <section className='w-full flex flex-col gap-6'>
-      <h3 className='text-base md:text-xl font-semibold text-soft-pink'>
+      <h3 className='text-base md:text-xl  font-poetsen text-blue-200'>
         More Similar Books
       </h3>
 

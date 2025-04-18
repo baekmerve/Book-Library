@@ -15,7 +15,7 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
 
   return (
     <section className=' mt-28 flex flex-wrap items-center gap-5 '>
-      <h2 className=' w-full font-bebas text-4xl text-center xl:text-left text-light-100 mx-auto'>
+      <h2 className=' w-full font-poetsen text-4xl text-center xl:text-left text-light-100 mx-auto'>
         {title}
       </h2>
 

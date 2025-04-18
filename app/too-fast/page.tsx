@@ -3,7 +3,7 @@ import React from 'react'
 const Page = () => {
   return (
     <main className='root-container flex min-h-screen flex-col items-center justify-center'>
-      <h1 className='font-bebas text-5xl font-bold text-light-100'>
+      <h1 className='font-poetsen text-5xl font-bold text-light-100'>
         you are too fast !
       </h1>
       <p className='mt-5 max-w-4xl text-center text-muted-foreground'>
