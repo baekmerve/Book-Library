@@ -46,7 +46,6 @@ export const { POST } = serve<InitialData>(async (context) => {
   // Welcome Email
   await context.run('new-signup', async () => {
   
-
     await sendEmail({
       email,
       subject: 'Welcome to the platform',
