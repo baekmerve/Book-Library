@@ -2,7 +2,7 @@
 import { db } from '@/database/drizzle'
 import { AuthCredentials, UserAccountType } from './../types'
 import { books, borrowRecords, users } from '@/database/schema'
-import { eq } from 'drizzle-orm'
+import { desc, eq } from 'drizzle-orm'
 import { signIn, signOut } from '@/auth'
 import { hash } from 'bcryptjs'
 import { headers } from 'next/headers'
@@ -131,9 +131,33 @@ export const getAccountDetails = async (
     .from(borrowRecords)
     .leftJoin(books, eq(borrowRecords.bookId, books.id))
     .where(eq(borrowRecords.userId, userId))
+    .orderBy(desc(borrowRecords.borrowDate)) // Important for picking latest return
 
-  // 3. Transform rating string → number
-  const TransformedRecords = RawBorrowRecords.map((record) => ({
+  // 3. Transform + filter records
+  const seenReturnedBookIds = new Set<string>()
+
+  const filteredRecords = RawBorrowRecords.filter((record) => {
+    const status = record.borrowRecord.status
+
+    if (status !== 'RETURNED') {
+      // Keep all non-returned records (BORROWED, OVERDUE etc.)
+      return true
+    }
+
+    const bookId = record.borrowRecord.bookId
+
+    if (seenReturnedBookIds.has(bookId)) {
+      // We've already included the most recent return for this book
+      return false
+    }
+
+    // First time we see a return for this book
+    seenReturnedBookIds.add(bookId)
+    return true
+  })
+
+  // 4.  Convert rating to → number
+  const TransformedRecords = filteredRecords.map((record) => ({
     ...record,
     book: record.book
       ? {
@@ -148,3 +172,4 @@ export const getAccountDetails = async (
     borrowRecords: TransformedRecords,
   }
 }
+

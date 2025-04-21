@@ -140,6 +140,22 @@ export const isBookBorrowed = async (
   return borrowRecord[0]
 }
 
+export const fecthBorrowReturnRecords = async (userId: string, bookId: string) => {
+  const records = await db
+    .select()
+    .from(borrowRecords)
+    .where(
+      and(
+        eq(borrowRecords.userId, userId),
+        eq(borrowRecords.bookId, bookId),
+
+      )
+    )
+    .orderBy(desc(borrowRecords.borrowDate))
+
+  return records
+}
+
 export const fetchAllBooks = async (): Promise<Book[]> => {
   try {
     const bookList = await db
@@ -254,5 +270,35 @@ export const fetchSimilarBook = async (
   } catch (error) {
     console.error('🚀 - error:', error)
     throw new Error('Failed to fetch similar books.')
+  }
+}
+
+export const fetchSameAuthorBook = async (
+  author: string,
+  bookId: string
+): Promise<Book[] | undefined> => {
+  try {
+    const bookList = await db
+      .select()
+      .from(books)
+      .where(
+        and(
+          like(sql`LOWER(${books.author})`, `%${author.toLowerCase()}%`),
+          not(eq(books.id, bookId))
+        )
+      )
+      .orderBy(sql`RANDOM()`)
+      .limit(6)
+
+    // Convert rating from string to number
+    const transformedBooks = bookList.map((book) => ({
+      ...book,
+      rating: parseFloat(book.rating as unknown as string),
+    }))
+
+    return transformedBooks
+  } catch (error) {
+    console.error('🚀 - error:', error)
+    throw new Error('Failed to fetch same author books.')
   }
 }
