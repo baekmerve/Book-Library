@@ -1,23 +1,16 @@
 'use client'
 import { SearchIcon } from 'lucide-react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 import { Input } from './ui/input'
+import { useSearchParamsUpdate } from '@/hooks/useSearchParamsUpdate'
 
 const SearchBox = () => {
-  const searchParams = useSearchParams()
-  const { replace } = useRouter()
-  const pathname = usePathname()
+  const { updateParams, searchParams } = useSearchParamsUpdate()
+
+  const currentGenre = searchParams.get('genre') || ''
 
   const handleSearch = useDebouncedCallback((searchWord: string) => {
-    const params = new URLSearchParams(searchParams.toString())
-
-    if (searchWord) {
-      params.set('query', searchWord)
-    } else {
-      params.delete('query')
-    }
-    replace(`${pathname}?${params.toString()}`)
+    updateParams({ query: searchWord, genre: currentGenre })
   }, 300)
 
   return (
@@ -25,7 +18,7 @@ const SearchBox = () => {
       <h1 className='text-base md:text-xl uppercase text-white'>
         Discover Your Next Great Read:
       </h1>
-      <h1 className='text-center text-2xl md:text-3xl xl:text-[56px] font-bold line-clamp-2 w-fit leading-snug text-white'>
+      <h1 className='text-center text-2xl md:text-3xl xl:text-4xl font-bold line-clamp-2 w-fit leading-snug text-white'>
         Explore and Search for <span className='text-primary'>Any Book</span> In
         Our Library
       </h1>
@@ -38,7 +31,7 @@ const SearchBox = () => {
         </label>
         <Input
           type='search'
-          className='w-full border-none font-semibold text-lg placeholder:font-normal focus-visible:ring-0 text-white placeholder:text-gray-400 placeholder:text-base peer pl-7'
+          className='w-full border-none font-semibold text-sm md:text-base placeholder:font-normal focus-visible:ring-0 text-white placeholder:text-gray-400 placeholder:text-md peer pl-7'
           placeholder='Enter a search keyword'
           onChange={(e) => {
             handleSearch(e.target.value)
