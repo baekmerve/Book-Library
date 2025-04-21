@@ -22,7 +22,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
 
       <section className='flex min-h-screen h-full w-full md:w-1/3 items-center bg-gray-100 px-5 '>
         <div className='mx-auto flex max-w-xl flex-col gap-6 rounded-lg p-10'>
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-3 '>
             <BookOpen className='size-12 text-gray-700' />
             <h1 className='text-2xl font-semibold text-gray-800'>
               Book Library

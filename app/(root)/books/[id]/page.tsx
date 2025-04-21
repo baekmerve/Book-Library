@@ -10,6 +10,7 @@ import {
 } from '@/lib/actions/book-actions'
 import SimilarBooks from '@/components/SimilarBooks'
 import { notFound } from 'next/navigation'
+import SameAuthorBooks from '@/components/SameAuthorBooks'
 
 const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params
@@ -51,10 +52,10 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className='flex flex-col gap-10 w-full xl:w-1/2 '>
           {/* Book Summary */}
           <section className='flex flex-col gap-4'>
-            <h3 className='text-lg md:text-3xl  font-poetsen text-primary'>
+            <h3 className='text-lg md:text-2xl  font-poetsen text-primary'>
               Book Summary
             </h3>
-            <div className='space-y-4  text-sm md:text-lg text-light-100 leading-relaxed'>
+            <div className='space-y-4  text-sm md:text-base text-light-100 leading-relaxed'>
               {bookDetails.summary.split('\n').map((line, index) => (
                 <p key={index}>{line}</p>
               ))}
@@ -66,6 +67,8 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
           {/* Similar Books */}
 
           <SimilarBooks genre={bookDetails.genre} bookId={bookDetails.id} />
+
+          <SameAuthorBooks author={bookDetails.author} bookId={bookDetails.id} />
         </div>
       </div>
     </div>

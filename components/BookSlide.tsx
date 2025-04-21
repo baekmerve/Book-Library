@@ -21,7 +21,7 @@ const BookSlide = ({ latestBooks }: Props) => {
       pagination={{
         clickable: true,
         bulletClass:
-          'swiper-pagination-bullet !bg-soft-pink !opacity-80 !size-3',
+          'swiper-pagination-bullet !bg-soft-pink !opacity-80 !size-2',
         bulletActiveClass: '!bg-white !opacity-100',
       }}
       autoplay={{
@@ -33,27 +33,27 @@ const BookSlide = ({ latestBooks }: Props) => {
     >
       {latestBooks.map((book) => (
         <SwiperSlide key={book.id}>
-          <div className='relative w-full mx-auto p-5 flex flex-col-reverse justify-center items-center gap-20 sm:gap-32 xl:flex-row xl:gap-12 py-24   '>
+          <div className='relative w-full mx-auto px-5 py-14 flex flex-col-reverse justify-center items-center gap-14 sm:gap-20 xl:flex-row xl:gap-12'>
             {/* LEFT GLASS INFO */}
-            <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2  items-center xl:items-start text-center xl:text-left'>
-              <h1 className='text-xl md:text-3xl xl:text-5xl font-semibold text-white'>
+            <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2 items-center xl:items-start text-center xl:text-left '>
+              <h1 className='text-xl md:text-2xl xl:text-3xl font-semibold text-white'>
                 {book.title}
               </h1>
-              <div className='mt-6 text-base md:text-xl text-light-100 space-y-3 md:space-y-5'>
+              <div className='mt-6 text-md md:text-xl text-light-100 space-y-3 md:space-y-5'>
                 <p className='text-white'>
                   By <span className='font-semibold '>{book.author}</span>
                 </p>
                 <p className='text-white'>
                   Category: <span className='font-semibold '>{book.genre}</span>
                 </p>
-                <p className='flex justify-center xl:justify-start items-center gap-1 text-white rounded-xl w-fit py-3 px-5 bg-dark-100'>
+                <p className='flex justify-center xl:justify-start items-center gap-1 text-white rounded-xl w-fit py-3 px-5 bg-dark-100 '>
                   <Star className='size-5 text-yellow-500 fill-yellow-500' />
                   Rating: {book.rating}/5
                 </p>
               </div>
-
+              
               <Button
-                className='mt-6 h-12 md:min-h-14 text-base md:text-xl w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70 font-poetsen'
+                className='mt-6 h-12 md:h-14 text-base md:text-lg w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70 font-poetsen'
                 asChild
               >
                 <Link href={`/books/${book.id}`}>Go to Book</Link>
@@ -64,12 +64,12 @@ const BookSlide = ({ latestBooks }: Props) => {
             <div className='relative flex justify-center items-center w-full xl:w-1/2 '>
               <div className='group perspective relative '>
                 {/* Blurred Shadow */}
-                <div className='absolute -inset-3 md:-inset-10 blur-sm  opacity-40 left-12  md:left-30 rotate-2 rounded-xl z-0'>
+                <div className='absolute -inset-3 md:-inset-10 blur-sm  opacity-40 left-12 md:left-30 rotate-2 rounded-xl z-0'>
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
                     priority
-                    className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px]  '
+                    className='w-[180px] h-[240px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[430px] xl:w-[320px] xl:h-[460px] '
                   />
                 </div>
 

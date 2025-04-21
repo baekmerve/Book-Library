@@ -14,7 +14,7 @@ const NavButton = ({ route, text }: Props) => {
   return (
     <Button
       asChild
-      className={` font-poetsen text-base sm:text-xl md:text-2xl  bg-transparent shadow-none hover:bg-transparent transition-all duration-300 ease-in-out text-primary ${
+      className={` font-poetsen text-base md:text-xl  bg-transparent shadow-none hover:bg-transparent transition-all duration-300 ease-in-out text-primary ${
         isActive
           ? ' underline underline-offset-8 decoration-2 decoration-soft-pink '
           : ' hover:text-soft-pink hover:scale-105'

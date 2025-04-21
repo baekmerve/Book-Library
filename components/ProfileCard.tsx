@@ -11,7 +11,7 @@ interface Props {
 const ProfileCard = ({ userName, email, accountDetails }: Props) => {
   const initials = getInitials(userName)
   return (
-    <section className='relative flex flex-col gap-12 items-start  rounded-3xl p-8 sm:p-14 shadow-xl shadow-black/30 border xl:mt-22 border-white/10 xl:w-[30%] h-fit bg-gradient-to-br from-[#11716e] to-[#032a3a]'>
+    <section className='relative flex flex-col gap-12 items-start rounded-3xl p-8 sm:p-14 shadow-xl shadow-black/30 border xl:mt-22 border-white/10 xl:w-[40%] h-fit bg-gradient-to-br from-[#11716e] to-[#032a3a]'>
       <div className='flex items-center gap-4 mb-6'>
         <Avatar className='w-16 h-16'>
           <AvatarFallback className='text-xl font-bold'>

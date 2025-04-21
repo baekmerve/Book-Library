@@ -1,25 +1,24 @@
-import { fetchSimilarBook } from '@/lib/actions/book-actions'
+import { fetchSameAuthorBook } from '@/lib/actions/book-actions'
 import React from 'react'
 import BookCover from './BookCover'
 import Link from 'next/link'
 
-
 interface Props {
-  genre: string
+  author: string
   bookId: string
 }
 
-const SimilarBooks = async ({ genre, bookId }: Props) => {
-  const similarBookList = await fetchSimilarBook(genre, bookId)
+const SameAuthorBooks = async ({ author, bookId }: Props) => {
+  const bookList = await fetchSameAuthorBook(author, bookId)
 
-  if (!similarBookList?.length) return null
+  if (!bookList?.length) return null
   return (
     <section className='w-full flex flex-col gap-6'>
       <h3 className='text-base md:text-xl  font-poetsen text-blue-200'>
-        More Similar Books
+        Author&apos;s Other Books
       </h3>
       <div className='flex flex-wrap gap-7 items-center '>
-        {similarBookList?.map((book) => (
+        {bookList?.map((book) => (
           <div
             key={book.id}
             className=' shadow-xl shadow-black hover:shadow-indigo-300/20 transition duration-300 '
@@ -38,4 +37,4 @@ const SimilarBooks = async ({ genre, bookId }: Props) => {
   )
 }
 
-export default SimilarBooks
+export default SameAuthorBooks

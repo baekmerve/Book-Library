@@ -21,13 +21,13 @@ const BookOverview = ({
           <BookCover
             coverColor={coverColor}
             coverImage={coverUrl}
-            className=' w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px] z-10'
+            className=' w-[200px] h-[300px] md:w-[256px] md:h-[380px] xl:w-[320px] xl:h-[480px] z-10'
           />
-          <div className='absolute top-4 left-4 rotate-10 opacity-25 z-0'>
+          <div className='absolute top-4 left-6 md:left-10 rotate-10 opacity-25 z-0'>
             <BookCover
               coverColor={coverColor}
               coverImage={coverUrl}
-              className=' w-[200px] h-[280px] md:w-[256px] md:h-[354px] xl:w-[320px] xl:h-[460px]'
+              className=' w-[200px] h-[300px] md:w-[256px] md:h-[380px] xl:w-[320px] xl:h-[480px]'
             />
           </div>
         </div>
@@ -35,7 +35,7 @@ const BookOverview = ({
 
       {/* Right: Book Info */}
       <div className='w-full xl:w-[65%] flex flex-col gap-8 text-light-100'>
-        <h1 className='text-2xl md:text-5xl font-bold text-white'>{title}</h1>
+        <h1 className='text-2xl md:text-4xl font-bold text-white'>{title}</h1>
 
         <div className='space-y-2 text-sm md:text-lg'>
           <p>

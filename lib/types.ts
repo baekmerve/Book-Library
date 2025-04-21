@@ -58,3 +58,4 @@ export type BorrowedBookType = {
 export type UserAccountType = User & {
   borrowRecords: BorrowedBookType[]
 }
+

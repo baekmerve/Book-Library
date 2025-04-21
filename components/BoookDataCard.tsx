@@ -22,35 +22,35 @@ const BoookDataCard = async ({
 
   return (
     <>
-      <div className='flex flex-col justify-center items-start text-md gap-2 w-full text-white'>
+      <div className='flex flex-col justify-center items-start  gap-2 w-full text-white pl-4 pr-2'>
         {/* title-author-genre */}
-        <div className=' text-left space-y-2'>
-          <p className='text-base md:text-lg font-semibold w-full break-words leading-tight'>
+        <div className=' text-left space-y-1'>
+          <p className='text-sm md:text-base font-semibold w-full break-words leading-tight'>
             {book.title}
           </p>
-          <p className='text-sm md:text-base w-full break-words leading-tight'>
+          <p className='text-xs md:text-sm w-full break-words leading-tight'>
             By {book.author}
           </p>
-          <p className='text-sm md:text-base italic text-light-100 mt-1'>
+          <p className='text-xs md:text-sm italic text-light-100 '>
             {book.genre}
           </p>
         </div>
         {/* borrow infos */}
-        <div className=' text-sm md:text-base space-y-2'>
-          <p className='flex gap-2'>
-            <BookOpenCheck size={20} className='text-blue-300' />
-            Borrowed on <span>{borrowDateFormatted}</span>
+        <div className=' text-xs md:text-sm space-y-1'>
+          <p className='flex flex-wrap gap-2 items-center'>
+            <BookOpenCheck className='text-blue-300 size-4 md:size-5' />
+            Borrowed : <span>{borrowDateFormatted}</span>
           </p>
 
-          <p className='flex gap-2 items-center'>
+          <p className='flex flex-wrap gap-2 items-center'>
             {isReturned ? (
               <>
-                <BadgeCheckIcon size={20} className='text-green-500' /> Returned
-                on <span>{borrowRecord?.returnDate}</span>
+                <BadgeCheckIcon className='text-green-500 size-4 md:size-5' />
+                Returned :<span>{borrowRecord?.returnDate}</span>
               </>
             ) : (
               <>
-                <Calendar1Icon size={20} className='text-amber-600' />
+                <Calendar1Icon className='text-amber-600 size-4 md:size-5' />
                 {daysLeft}
                 <span>days left to due</span>
               </>
