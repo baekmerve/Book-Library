@@ -36,7 +36,7 @@ const BookSlide = ({ latestBooks }: Props) => {
           <div className='relative w-full mx-auto px-5 py-14 flex flex-col-reverse justify-center items-center gap-14 sm:gap-20 xl:flex-row xl:gap-12'>
             {/* LEFT GLASS INFO */}
             <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2 items-center xl:items-start text-center xl:text-left '>
-              <h1 className='text-base md:text-xl xl:text-2xl font-semibold text-white'>
+              <h1 className='text-lg md:text-2xl xl:text-3xl font-semibold text-white'>
                 {book.title}
               </h1>
               <div className='mt-6 text-sm md:text-base xl:text-lg text-light-100 space-y-3 md:space-y-5'>
