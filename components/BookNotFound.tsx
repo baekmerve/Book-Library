@@ -14,10 +14,10 @@ const BookNotFound = () => {
         />
       </div>
       <>
-        <h4 className='text-white mt-6 font-semibold text-2xl'>
+        <h4 className='text-white mt-6 font-semibold text:xl md:text-2xl'>
           No Results Found
         </h4>
-        <p className='text-light-100 w-[360px] mt-1'>
+        <p className='text-sm md:text-base text-light-100 w-[360px] mt-1'>
           We couldn’t find any books matching your search. Try using different
           keywords or check for typos.
         </p>
