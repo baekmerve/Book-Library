@@ -11,18 +11,19 @@ import {
 import { Button } from './ui/button'
 
 import { fecthBorrowReturnRecords } from '@/lib/actions/book-actions'
-import { CalendarDaysIcon, LibraryBigIcon } from 'lucide-react'
+import { CalendarDaysIcon, HistoryIcon, LibraryBigIcon } from 'lucide-react'
 interface Props {
   bookId: string
   userId: string
 }
-const ReturnHistoryButton = async ({ bookId, userId }: Props) => {
+const BorrowHistoryButton = async ({ bookId, userId }: Props) => {
   const returnHistory = await fecthBorrowReturnRecords(userId, bookId)
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className='h-12 md:h-14 w-fit cursor-pointer font-poetsen text-base md:text-lg text-gray-700'>
-          Borrow History
+        <Button className='self-end bg-light-100 w-fit cursor-pointer mb-1 mr-4 text-black text-xs rounded-sm '>
+          <HistoryIcon />
+          History
         </Button>
       </DialogTrigger>
 
@@ -78,4 +79,4 @@ const ReturnHistoryButton = async ({ bookId, userId }: Props) => {
   )
 }
 
-export default ReturnHistoryButton
+export default BorrowHistoryButton

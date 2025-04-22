@@ -42,7 +42,7 @@ const Books = async (props: {
       {!isFiltered && <SimpleBookList books={allBooks} />}
 
       {isFiltered && (
-        <div className='w-full mt-10 text-center'>
+        <div className='w-full mt-5 text-center'>
           <p className='text-xl xl:text-2xl font-bold text-white'>
             Showing results
             {searchWord && (
@@ -56,7 +56,7 @@ const Books = async (props: {
             {selectedGenre && selectedGenre !== 'All' && (
               <>
                 {' in '}
-                <span className='font-semibold text-soft-pink'>
+                <span className='font-semibold text-primary'>
                   {selectedGenre}
                 </span>
               </>

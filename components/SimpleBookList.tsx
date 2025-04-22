@@ -14,7 +14,7 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
   if (books.length < 1) return
 
   return (
-    <section className=' flex flex-wrap items-center mt-20  gap-5'>
+    <section className=' flex flex-wrap items-center mt-10  gap-5'>
       <h2 className=' w-full font-poetsen text-4xl text-center xl:text-left text-light-100 mx-auto '>
         {title}
       </h2>
@@ -41,17 +41,16 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
                   <BookCover
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
-                    //className='w-[140px] h-[215px]'
                     className=' w-[100px] h-[150px] md:w-[130px] md:h-[190px]'
                   />
                 </Link>
               </div>
             </div>
-            <div className='mt-4 text-center px-2'>
-              <p className='text-lg font-semibold text-white w-full break-wordsleading-tight'>
+            <div className=' text-center px-2'>
+              <p className='text-sm md:text-base font-semibold text-white w-full break-words leading-tight'>
                 {book.title}
               </p>
-              <p className='text-sm italic text-light-100 mt-1'>{book.genre}</p>
+              <p className=' text-xs md:text-sm italic text-light-100 mt-1'>{book.genre}</p>
             </div>
           </li>
         ))}

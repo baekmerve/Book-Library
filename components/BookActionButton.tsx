@@ -79,9 +79,9 @@ const BookActionButton = ({
     <Button
       onClick={onClick}
       disabled={isProcessing}
-      className={` h-12 md:h-14 w-fit cursor-pointer ${className}`}
+      className={` h-10 md:h-12 w-fit cursor-pointer ${className}`}
     >
-      <p className='font-poetsen text-base md:text-xl'>
+      <p className='font-poetsen text-sm md:text-base'>
         {isProcessing ? loadingText : buttonText}
       </p>
     </Button>

@@ -14,7 +14,7 @@ const SearchBox = () => {
   }, 300)
 
   return (
-    <div className='mt-15 flex flex-col items-center gap-4 md:w-[430px] xl:w-[630px]'>
+    <div className='mt-8 flex flex-col items-center gap-4 md:w-[430px] xl:w-[630px]'>
       <h1 className='text-base md:text-xl uppercase text-white'>
         Discover Your Next Great Read:
       </h1>
