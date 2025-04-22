@@ -139,7 +139,7 @@ const AuthForm = <T extends FieldValues>({
             {isSignIn ? 'Don’t have an account? ' : 'Already have an account? '}
             <Link
               href={isSignIn ? '/sign-up' : '/sign-in'}
-              className='font-bold text-primary hover:underline'
+              className='font-bold text-soft-pink hover:underline'
             >
               {isSignIn ? 'Register here' : 'Login'}
             </Link>

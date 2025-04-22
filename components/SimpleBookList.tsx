@@ -32,7 +32,9 @@ const SimpleBookList = ({ title, books, horizontalScroll }: Props) => {
             key={book.title}
             className={cn(
               'flex flex-col snap-start justify-start items-center  text-white rounded-xl min-h-[320px] hover:-translate-y-4 transition-all duration-300 ease-in-out ',
-              horizontalScroll ? ' min-w-[150px] md:min-w-[200px]' : 'w-[160px] md:w-[180px]'
+              horizontalScroll
+                ? ' min-w-[150px] md:min-w-[200px]'
+                : 'w-[160px] md:w-[180px]'
             )}
           >
             <div className='flex flex-col items-center justify-center w-full relative rounded-xl  '>

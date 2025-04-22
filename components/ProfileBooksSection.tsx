@@ -46,8 +46,12 @@ const ProfileBooksSection = ({
           {records.map((record) => (
             <div
               key={record.borrowRecord.id}
-              className='relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#191b22] min-w-[200px] min-h-[335px] md:min-w-[230px] md:min-h-[390px]  shadow-slate-700 shadow-lg border border-white/10
-              '
+              className={cn(
+                'relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#191b22]  shadow-slate-700 shadow-lg border border-white/10',
+                horizontalScroll
+                  ? 'min-w-[200px] max-w-[201px]  md:min-w-[230px] md:max-w-[231px] '
+                  : 'w-[200px] min-h-[335px] md:w-[230px] md:min-h-[390px]'
+              )}
             >
               {/* Book cover */}
               <div className='relative px-6 py-4'>
@@ -82,6 +86,7 @@ const ProfileBooksSection = ({
                 <BorrowHistoryButton
                   bookId={record.borrowRecord.bookId}
                   userId={userId}
+                  title={record.book?.title as string}
                 />
               )}
               {!isReturned && (
