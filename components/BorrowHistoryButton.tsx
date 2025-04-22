@@ -15,8 +15,9 @@ import { CalendarDaysIcon, HistoryIcon, LibraryBigIcon } from 'lucide-react'
 interface Props {
   bookId: string
   userId: string
+  title: string
 }
-const BorrowHistoryButton = async ({ bookId, userId }: Props) => {
+const BorrowHistoryButton = async ({ bookId, userId, title }: Props) => {
   const returnHistory = await fecthBorrowReturnRecords(userId, bookId)
   return (
     <Dialog>
@@ -29,8 +30,11 @@ const BorrowHistoryButton = async ({ bookId, userId }: Props) => {
 
       <DialogContent className='max-w-[80%] sm:max-w-[550px] rounded-2xl shadow-xl border border-gray-700 bg-gray-950'>
         <DialogHeader>
-          <DialogTitle className='text-xl md:text-2xl font-poetsen text-blue-200'>
-            Borrow History
+          <DialogTitle className='text-lg md:text-xl font-poetsen text-blue-200'>
+            Borrow History of :
+            <span className='ml-2 text-soft-pink  '>
+              `{title}`
+            </span>
           </DialogTitle>
           <DialogDescription className='text-sm md:text-base  text-gray-400'>
             You can check the borrow and return dates of the book here.
