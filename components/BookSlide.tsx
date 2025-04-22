@@ -36,10 +36,10 @@ const BookSlide = ({ latestBooks }: Props) => {
           <div className='relative w-full mx-auto px-5 py-14 flex flex-col-reverse justify-center items-center gap-14 sm:gap-20 xl:flex-row xl:gap-12'>
             {/* LEFT GLASS INFO */}
             <div className='backdrop-blur-md bg-white/5 border border-white/10 shadow-md rounded-xl p-10 flex flex-col w-full xl:w-1/2 items-center xl:items-start text-center xl:text-left '>
-              <h1 className='text-xl md:text-2xl xl:text-3xl font-semibold text-white'>
+              <h1 className='text-base md:text-xl xl:text-2xl font-semibold text-white'>
                 {book.title}
               </h1>
-              <div className='mt-6 text-md md:text-xl text-light-100 space-y-3 md:space-y-5'>
+              <div className='mt-6 text-sm md:text-base xl:text-lg text-light-100 space-y-3 md:space-y-5'>
                 <p className='text-white'>
                   By <span className='font-semibold '>{book.author}</span>
                 </p>
@@ -47,13 +47,13 @@ const BookSlide = ({ latestBooks }: Props) => {
                   Category: <span className='font-semibold '>{book.genre}</span>
                 </p>
                 <p className='flex justify-center xl:justify-start items-center gap-1 text-white rounded-xl w-fit py-3 px-5 bg-dark-100 '>
-                  <Star className='size-5 text-yellow-500 fill-yellow-500' />
+                  <Star className='size-4 xl:size-5 text-yellow-500 fill-yellow-500' />
                   Rating: {book.rating}/5
                 </p>
               </div>
-              
+
               <Button
-                className='mt-6 h-12 md:h-14 text-base md:text-lg w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70 font-poetsen'
+                className='mt-6 h-10 md:h-12 text-sm md:text-base w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70 font-poetsen'
                 asChild
               >
                 <Link href={`/books/${book.id}`}>Go to Book</Link>

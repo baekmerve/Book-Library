@@ -46,7 +46,8 @@ const ProfileBooksSection = ({
           {records.map((record) => (
             <div
               key={record.borrowRecord.id}
-              className='relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#12141D] min-w-[200px] min-h-[335px] md:min-w-[230px] md:min-h-[390px] shadow-slate-700 shadow-lg'
+              className='relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#191b22] min-w-[200px] min-h-[335px] md:min-w-[230px] md:min-h-[390px]  shadow-slate-700 shadow-lg border border-white/10
+              '
             >
               {/* Book cover */}
               <div className='relative px-6 py-4'>
