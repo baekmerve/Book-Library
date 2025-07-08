@@ -1,5 +1,4 @@
 import { auth } from '@/auth'
-
 import BookOverview from '@/components/BookOverview'
 import BookActionButton from '@/components/BookActionButton'
 import {
@@ -64,8 +63,8 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
         {/* Right side - Similar Books */}
         <div className='flex flex-col gap-10 w-full xl:w-1/2 '>
+          
           {/* Similar Books */}
-
           <SimilarBooks genre={bookDetails.genre} bookId={bookDetails.id} />
 
           <SameAuthorBooks author={bookDetails.author} bookId={bookDetails.id} />

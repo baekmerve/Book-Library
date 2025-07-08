@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { Frown } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button' // adjust if needed
+import { Button } from '@/components/ui/button'
 
 export default function Error({
   error,

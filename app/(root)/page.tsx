@@ -8,7 +8,6 @@ export default async function Home() {
   return (
     <div className=''>
       <BookSlide latestBooks={latestBooks} />
-
       <SimpleBookList
         title='Recently Added'
         books={latestBooks}

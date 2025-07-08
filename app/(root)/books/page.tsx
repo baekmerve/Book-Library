@@ -21,7 +21,6 @@ const Books = async (props: {
   let filteredBooks = allBooks
 
   // Filter books by keyword if exists
-
   if (searchWord) {
     filteredBooks = (await fetchBookByKeyword(searchWord)) || []
   }
