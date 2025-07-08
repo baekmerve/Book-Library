@@ -22,7 +22,7 @@ const BoookDataCard = async ({
 
   return (
     <>
-      <div className='flex flex-col justify-center items-start  gap-2 w-full text-white pl-4 pr-2'>
+      <div className='flex flex-col justify-center items-start  gap-2 w-full text-white pl-4 pr-2 '>
         {/* title-author-genre */}
         <div className=' text-left space-y-1'>
           <p className='text-sm md:text-base font-semibold w-full break-words leading-tight'>

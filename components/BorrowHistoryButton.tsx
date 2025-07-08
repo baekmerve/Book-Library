@@ -22,7 +22,7 @@ const BorrowHistoryButton = async ({ bookId, userId, title }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className='self-end bg-light-100 w-fit cursor-pointer mb-1 mr-4 text-black text-xs rounded-sm '>
+        <Button className=' self-center bg-light-100 w-fit cursor-pointer mb-2 text-black text-xs rounded-sm '>
           <HistoryIcon />
           History
         </Button>
@@ -32,9 +32,7 @@ const BorrowHistoryButton = async ({ bookId, userId, title }: Props) => {
         <DialogHeader>
           <DialogTitle className='text-lg md:text-xl font-poetsen text-blue-200'>
             Borrow History of :
-            <span className='ml-2 text-soft-pink  '>
-              `{title}`
-            </span>
+            <span className='ml-2 text-soft-pink  '>`{title}`</span>
           </DialogTitle>
           <DialogDescription className='text-sm md:text-base  text-gray-400'>
             You can check the borrow and return dates of the book here.

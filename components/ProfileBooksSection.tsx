@@ -23,13 +23,13 @@ const ProfileBooksSection = ({
   horizontalScroll = false,
 }: BookListSectionProps) => {
   return (
-    <section className='w-full flex flex-col p-4 rounded-xl'>
+    <section className='w-full flex flex-col p-4 rounded-xl '>
       <h2 className='font-poetsen text-2xl md:text-3xl text-light-100 tracking-normal text-center xl:text-left'>
         {title}
       </h2>
 
       {records.length === 0 ? (
-        <div className='w-full p-10'>
+        <div className='w-full p-10 '>
           <p className='text-white font-semibold text-center'>
             {isReturned ? 'No returned book.' : 'No borrowed book history.'}
           </p>
@@ -47,40 +47,42 @@ const ProfileBooksSection = ({
             <div
               key={record.borrowRecord.id}
               className={cn(
-                'relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#191b22]  shadow-slate-700 shadow-lg border border-white/10',
+                'relative rounded-xl flex flex-col snap-start items-center justify-start pt-4 gap-2 bg-[#191b22]  shadow-slate-700 shadow-lg border border-white/10 ',
                 horizontalScroll
                   ? 'min-w-[200px] max-w-[201px]  md:min-w-[230px] md:max-w-[231px] '
-                  : 'w-[200px] min-h-[335px] md:w-[230px] md:min-h-[390px]'
+                  : 'w-[200px] min-h-[335px] md:w-[230px] md:min-h-[390px] '
               )}
             >
-              {/* Book cover */}
-              <div className='relative px-6 py-4'>
-                {/* Background color layer */}
-                <div
-                  className='absolute inset-0 z-10 m-1 rounded-xl'
-                  style={{
-                    backgroundColor: record.book?.coverColor,
-                    opacity: 0.3,
-                  }}
-                />
-                <div className='relative z-20 '>
-                  <Link href={`/books/${record.book?.id}`} className='w-full'>
-                    <BookCover
-                      coverColor={record.book?.coverColor as string}
-                      coverImage={record.book?.coverUrl as string}
-                      className=' w-[100px] h-[150px] md:w-[120px] md:h-[180px]'
-                    />
-                  </Link>
+              <div className='flex-1 '>
+                {/* Book cover */}
+                <div className='flex justify-center items-center relative py-4'>
+                  {/* Background color layer */}
+                  <div
+                    className='absolute inset-0 z-10 m-1 rounded-xl'
+                    style={{
+                      backgroundColor: record.book?.coverColor,
+                      opacity: 0.3,
+                    }}
+                  />
+                  <div className='relative z-20 '>
+                    <Link href={`/books/${record.book?.id}`} className='w-full'>
+                      <BookCover
+                        coverColor={record.book?.coverColor as string}
+                        coverImage={record.book?.coverUrl as string}
+                        className=' w-[100px] h-[150px] md:w-[120px] md:h-[180px]'
+                      />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              {/* Book info */}
 
-              <BoookDataCard
-                borrowRecord={record.borrowRecord}
-                book={record.book!}
-                userId={userId}
-                isReturned={isReturned}
-              />
+                {/* Book info */}
+                <BoookDataCard
+                  borrowRecord={record.borrowRecord}
+                  book={record.book!}
+                  userId={userId}
+                  isReturned={isReturned}
+                />
+              </div>
               {/* Action button */}
               {horizontalScroll && (
                 <BorrowHistoryButton
