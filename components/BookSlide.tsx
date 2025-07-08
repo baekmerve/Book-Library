@@ -53,7 +53,7 @@ const BookSlide = ({ latestBooks }: Props) => {
               </div>
 
               <Button
-                className='mt-6 h-10 md:h-12 text-sm md:text-base w-fit px-4 md:px-10 bg-primary text-dark-100 hover:bg-primary/70 font-poetsen'
+                className='mt-6 h-10 md:h-12 text-sm md:text-base w-fit px-4 md:px-10 bg-primary/80 text-dark-100 hover:bg-primary hover:shadow-lg hover:shadow-primary/70 font-poetsen'
                 asChild
               >
                 <Link href={`/books/${book.id}`}>Go to Book</Link>
