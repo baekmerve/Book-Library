@@ -5,8 +5,7 @@ import { Book, BorrowRecord } from '../types'
 import { books, borrowRecords } from '@/database/schema'
 import { and, desc, eq, like, not, or, sql } from 'drizzle-orm'
 import dayjs from 'dayjs'
-import { workflowClient } from '../workflow-client'
-import config from '../config'
+
 
 export interface BorrowBookParams {
   bookId: string
@@ -50,14 +49,8 @@ export const borrowBook = async (bookId: string, userId: string) => {
       .set({ availableCopies: book[0].availableCopies - 1 })
       .where(eq(books.id, bookId))
 
-    // send the borrow confirmation email
-    console.log('workflowClient-sending borrow email')
-    await workflowClient.trigger({
-      url: `${config.env.prodApiEndpoint}/api/workflows/borrow`,
-      body: {
-        userId,
-      },
-    })
+    // todo: send the borrow confirmation notification
+    
 
     return { success: true, data: JSON.parse(JSON.stringify(record)) }
   } catch (error) {

@@ -1,17 +1,12 @@
-import { serve } from '@upstash/workflow/nextjs'
 import { db } from '@/database/drizzle'
 import { borrowRecords, users } from '@/database/schema'
 import { eq } from 'drizzle-orm'
-import { sendEmail } from '@/lib/workflow-client'
 
 type BorrowState = 'reminding' | 'non-reminding' | 'returned' | 'overdue'
 
-type InitialData = {
-  userId: string
-}
-
 const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getUserBorrowState = async (userId: string): Promise<BorrowState> => {
   const record = await db
     .select()
@@ -54,55 +49,7 @@ export const getUserInfo = async (userId: string) => {
   return user
 }
 
-export const { POST } = serve<InitialData>(async (context) => {
-  const { userId } = context.requestPayload
+// show borrow confirmation notification
 
-  const { email, fullName } = await context.run('get-user-info', async () => {
-    return await getUserInfo(userId)
-  })
-
-  // Send borrow confirmation email
-  await context.run('borrow-email', async () => {
-    console.log('sending borrow email')
-    await sendEmail({
-      email,
-      subject: 'Congratulations on borrowing a book!',
-      message: `Hello ${fullName}! You have successfully borrowed a book`,
-    })
-  })
-
-  // 2. Wait 6 days
-  await context.sleep('wait-for-6-day', 60 * 60 * 24 * 6)
-
-  // 3. Day 7 & 8 checks
-
-  while (true) {
-    const state = await context.run('check-return-state', async () => {
-      return await getUserBorrowState(userId)
-    })
-
-    if (state === 'returned') break // 🛑 Stop if already returned
-
-    if (state === 'reminding') {
-      await context.run('send-email-to-remind', async () => {
-        await sendEmail({
-          email,
-          subject: '1 day left to return',
-          message: `Hello ${fullName}! Your book is due in 1 day.`,
-        })
-      })
-    }
-
-    if (state === 'overdue') {
-      await context.run('send-email-overdue', async () => {
-        await sendEmail({
-          email,
-          subject: 'Overdue Book Alert!',
-          message: `Hey ${fullName}, your book is now overdue. Please return it as soon as possible.`,
-        })
-      })
-    }
-
-    await context.sleep('wait-for-1-day', 60 * 60 * 24 * 1) // 💤 Repeat daily
-  }
-})
+// 3. on day Day 7 check-return-state and show the notification again
+// 4. on day Day 14 check-return-state and show

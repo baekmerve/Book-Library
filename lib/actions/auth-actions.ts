@@ -5,21 +5,12 @@ import { books, borrowRecords, users } from '@/database/schema'
 import { desc, eq } from 'drizzle-orm'
 import { signIn, signOut } from '@/auth'
 import { hash } from 'bcryptjs'
-import { headers } from 'next/headers'
-import ratelimit from '../ratelimit'
-import { redirect } from 'next/navigation'
-import { workflowClient } from '../workflow-client'
-import config from '../config'
 
+//function to login
 export const signInWithCredentials = async (
   params: Pick<AuthCredentials, 'email' | 'password'>
 ) => {
   const { email, password } = params
-
-  const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1'
-  const { success } = await ratelimit.limit(ip)
-
-  if (!success) return redirect('/too-fast')
 
   try {
     const result = await signIn('credentials', {
@@ -36,13 +27,10 @@ export const signInWithCredentials = async (
     return { success: false, error: 'Signin error' }
   }
 }
+
+//function to register
 export const signUp = async (params: AuthCredentials) => {
   const { fullName, password, email } = params
-
-  const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1'
-  const { success } = await ratelimit.limit(ip)
-
-  if (!success) return redirect('/too-fast')
 
   //check if the user already exists
   const existingUser = await db
@@ -65,15 +53,6 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
     })
 
-    //send the welcome email
-    await workflowClient.trigger({
-      url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
-      body: {
-        email,
-        fullName,
-      },
-    })
-
     await signInWithCredentials({ email, password })
 
     return {
@@ -85,10 +64,12 @@ export const signUp = async (params: AuthCredentials) => {
   }
 }
 
+//function to logout 
 export const logout = async () => {
   await signOut()
 }
 
+//function to get account details
 export const getAccountDetails = async (
   userId: string
 ): Promise<UserAccountType> => {
