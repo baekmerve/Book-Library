@@ -59,3 +59,15 @@ export type UserAccountType = User & {
   borrowRecords: BorrowedBookType[]
 }
 
+
+export interface NotificationType {
+  id: string
+  userId: string
+  bookId: string | null
+  type: 'BORROWED' | 'RETURNED' | 'DUE_SOON' | 'EXPIRED'
+  message: string
+  isRead: boolean
+  createdAt: Date
+}
+
+

@@ -3,8 +3,9 @@ import Link from 'next/link'
 import LogoutButton from './LogoutButton'
 import { navLinks } from '@/app/constants '
 import NavButton from './NavButton'
+import NotificationBell from './notification/NotificationBell'
 
-const Header = () => {
+const Header = async () => {
   return (
     <header className='fixed top-0 left-0 z-50 w-full pt-5 lg:pt-10 pb-5 transition-all duration-300 bg-black/30 backdrop-blur-lg border-b border-white/10'>
       <div className='flex flex-col mx-auto items-center  lg:flex-row max-w-[90%] justify-between gap-5 '>
@@ -16,6 +17,7 @@ const Header = () => {
           {navLinks.map((link) => (
             <NavButton key={link.route} {...link} />
           ))}
+          <NotificationBell />
           <LogoutButton />
         </div>
       </div>

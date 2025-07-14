@@ -5,7 +5,8 @@ import { Book, BorrowRecord } from '../types'
 import { books, borrowRecords } from '@/database/schema'
 import { and, desc, eq, like, not, or, sql } from 'drizzle-orm'
 import dayjs from 'dayjs'
-
+import { createNotification } from './notification-actions'
+import { generateNotificationMessage } from '../utils'
 
 export interface BorrowBookParams {
   bookId: string
@@ -25,12 +26,14 @@ export const borrowBook = async (bookId: string, userId: string) => {
 
     // 2. Check availability
     const book = await db
-      .select({ availableCopies: books.availableCopies })
+      .select({
+        availableCopies: books.availableCopies,
+      })
       .from(books)
       .where(eq(books.id, bookId))
       .limit(1)
 
-    if (book[0].availableCopies <= 0 || !book.length) {
+    if (!book.length || book[0].availableCopies <= 0) {
       return { success: false, error: 'Book is not available for borrowing' }
     }
 
@@ -49,8 +52,21 @@ export const borrowBook = async (bookId: string, userId: string) => {
       .set({ availableCopies: book[0].availableCopies - 1 })
       .where(eq(books.id, bookId))
 
-    // todo: send the borrow confirmation notification
-    
+    // 6. Fetch book info for notification
+    const bookInfo = await NotificationDetails(bookId)
+
+    // 7. Send notification
+    await createNotification({
+      userId,
+      bookId,
+      type: 'BORROWED',
+      message: generateNotificationMessage({
+        type: 'BORROWED',
+        title: bookInfo?.title,
+        author: bookInfo?.author,
+        dueDate,
+      }),
+    })
 
     return { success: true, data: JSON.parse(JSON.stringify(record)) }
   } catch (error) {
@@ -104,6 +120,21 @@ export const returnBook = async (bookId: string, userId: string) => {
       .set({ availableCopies: currentCopies + 1 })
       .where(eq(books.id, bookId))
 
+    // 6. Fetch book info for notification
+    const bookInfo = await NotificationDetails(bookId)
+
+    // 7. Send notification
+    await createNotification({
+      userId,
+      bookId,
+      type: 'RETURNED',
+      message: generateNotificationMessage({
+        type: 'RETURNED',
+        title: bookInfo?.title,
+        author: bookInfo?.author,
+      }),
+    })
+
     return { success: true, data: JSON.parse(JSON.stringify(record[0])) }
   } catch (error) {
     console.error('🚀 - returnBook - error:', error)
@@ -115,6 +146,22 @@ export const returnBook = async (bookId: string, userId: string) => {
   }
 }
 
+export const NotificationDetails = async (
+  bookId: string
+): Promise<{
+  title: string
+  author: string
+} | null> => {
+  const book = await db
+    .select({
+      title: books.title,
+      author: books.author,
+    })
+    .from(books)
+    .where(eq(books.id, bookId))
+    .limit(1)
+  return book[0] ?? null
+}
 export const isBookBorrowed = async (
   userId: string,
   bookId: string
@@ -133,16 +180,15 @@ export const isBookBorrowed = async (
   return borrowRecord[0]
 }
 
-export const fecthBorrowReturnRecords = async (userId: string, bookId: string) => {
+export const fecthBorrowReturnRecords = async (
+  userId: string,
+  bookId: string
+) => {
   const records = await db
     .select()
     .from(borrowRecords)
     .where(
-      and(
-        eq(borrowRecords.userId, userId),
-        eq(borrowRecords.bookId, bookId),
-
-      )
+      and(eq(borrowRecords.userId, userId), eq(borrowRecords.bookId, bookId))
     )
     .orderBy(desc(borrowRecords.borrowDate))
 
@@ -179,12 +225,10 @@ export const fetchBookById = async (bookId: string): Promise<Book | null> => {
 
     if (!book.length) return null
 
-    const transformedBook = {
+    return {
       ...book[0],
       rating: parseFloat(book[0].rating as unknown as string),
     }
-
-    return transformedBook
   } catch (error) {
     console.log('🚀 - fetchBookById - error:', error)
     throw new Error('Failed to fetch the book.')
