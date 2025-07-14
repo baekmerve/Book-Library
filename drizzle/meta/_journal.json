@@ -57,6 +57,13 @@
       "when": 1744941550097,
       "tag": "0007_tired_sabra",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1752126692905,
+      "tag": "0008_lazy_sheva_callister",
+      "breakpoints": true
     }
   ]
 }
