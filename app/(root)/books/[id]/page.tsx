@@ -1,12 +1,7 @@
 import { auth } from '@/auth'
 import BookOverview from '@/components/BookOverview'
 import BookActionButton from '@/components/BookActionButton'
-import {
-  borrowBook,
-  isBookBorrowed,
-  fetchBookById,
-  returnBook,
-} from '@/lib/actions/book-actions'
+import { isBookBorrowed, fetchBookById } from '@/lib/actions/book-actions'
 import SimilarBooks from '@/components/SimilarBooks'
 import { notFound } from 'next/navigation'
 import SameAuthorBooks from '@/components/SameAuthorBooks'
@@ -34,7 +29,6 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         bookId={id}
         userId={userId}
         availableToBorrow={availableToBorrow}
-        handleAction={alreadyBorrowed ? returnBook : borrowBook}
         buttonText={alreadyBorrowed ? 'Return Now' : 'Borrow Book'}
         loadingText={alreadyBorrowed ? 'Returning...' : 'Borrowing...'}
         redirectPath={alreadyBorrowed ? '/my-profile' : ''}
@@ -63,11 +57,13 @@ const BookDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
         {/* Right side - Similar Books */}
         <div className='flex flex-col gap-10 w-full xl:w-1/2 '>
-          
           {/* Similar Books */}
           <SimilarBooks genre={bookDetails.genre} bookId={bookDetails.id} />
 
-          <SameAuthorBooks author={bookDetails.author} bookId={bookDetails.id} />
+          <SameAuthorBooks
+            author={bookDetails.author}
+            bookId={bookDetails.id}
+          />
         </div>
       </div>
     </div>

@@ -1,18 +1,15 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
-
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { useNotificationStore } from '@/lib/stores/notificationStore'
+
 
 interface Props {
   bookId: string
   userId: string
   availableToBorrow?: boolean
-  handleAction: (
-    bookId: string,
-    userId: string
-  ) => Promise<{ success: boolean; error?: string }>
   buttonText: string
   loadingText: string
   iconSrc?: string
@@ -24,7 +21,6 @@ const BookActionButton = ({
   bookId,
   userId,
   availableToBorrow = true,
-  handleAction,
   buttonText,
   loadingText,
   redirectPath,
@@ -33,6 +29,9 @@ const BookActionButton = ({
 }: Props) => {
   const router = useRouter()
   const [isProcessing, setIsProcessing] = useState(false)
+  const { fetchNotifications } = useNotificationStore()
+
+
 
   const onClick = async () => {
     if (variant === 'borrow' && !availableToBorrow) {
@@ -45,13 +44,26 @@ const BookActionButton = ({
     setIsProcessing(true)
 
     try {
-      const result = await handleAction(bookId, userId)
+      const endpoint =
+        variant === 'borrow' ? '/api/books/borrow' : '/api/books/return'
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ bookId, userId }),
+      })
+
+      const result = await res.json()
+
       if (result.success) {
         toast.success(
           variant === 'borrow'
             ? 'Book borrowed successfully'
             : 'Book returned successfully'
         )
+        await fetchNotifications()
+
         if (redirectPath) {
           router.push(redirectPath)
         } else {
