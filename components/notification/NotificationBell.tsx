@@ -6,8 +6,11 @@ import { Button } from '../ui/button'
 import { useNotificationStore } from '@/lib/stores/notificationStore'
 
 export default function NotificationBell() {
-  const { notifications, fetchNotifications, markAllAsRead, unreadCount } =
-    useNotificationStore()
+  const notifications = useNotificationStore((state) => state.notifications)
+  const unreadCount = useNotificationStore((state) => state.unreadCount)
+  const fetchNotifications = useNotificationStore.getState().fetchNotifications
+  const markAllAsRead = useNotificationStore.getState().markAllAsRead
+
   const [isOpen, setIsOpen] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
 

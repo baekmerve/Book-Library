@@ -28,7 +28,7 @@ export const useNotificationStore = create<NotificationStore>((set, get) => ({
   markAllAsRead: async () => {
     try {
       await fetch('/api/notifications/mark-as-read', { method: 'POST' })
-      await get().fetchNotifications() // fetch tekrar çağrılır
+      await get().fetchNotifications()
     } catch (error) {
       console.error('markAllAsRead error:', error)
     }

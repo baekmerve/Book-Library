@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { useNotificationStore } from '@/lib/stores/notificationStore'
 
-
 interface Props {
   bookId: string
   userId: string
@@ -29,9 +28,9 @@ const BookActionButton = ({
 }: Props) => {
   const router = useRouter()
   const [isProcessing, setIsProcessing] = useState(false)
-  const { fetchNotifications } = useNotificationStore()
-
-
+  const fetchNotifications = useNotificationStore(
+    (state) => state.fetchNotifications
+  )
 
   const onClick = async () => {
     if (variant === 'borrow' && !availableToBorrow) {
