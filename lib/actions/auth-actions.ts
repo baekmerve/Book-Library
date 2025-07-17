@@ -18,13 +18,18 @@ export const signInWithCredentials = async (
       password,
       redirect: false,
     })
+    //result can be null, to control the case
+    if (!result) {
+      return { success: false, error: 'Unexpected error occurred' }
+    }
     if (result?.error) {
       return { success: false, error: result.error }
     }
+
     return { success: true }
   } catch (error) {
-    console.error('🚀 - SignIn - error:', error)
-    return { success: false, error: 'Signin error' }
+    console.error('🚀 - signInWithCredentials - error:', error)
+    return { success: false, error: 'Password or email is incorrect' }
   }
 }
 
@@ -38,14 +43,16 @@ export const signUp = async (params: AuthCredentials) => {
     .from(users)
     .where(eq(users.email, email))
     .limit(1)
+
   //if the user already exists
   if (existingUser.length > 0) {
     return { success: false, error: 'User already exists' }
   }
+
   //hash the password
   const hashedPassword = await hash(password, 10)
 
-  //if the user does not exist then add to db
+  //if the user does not exist then add user to db
   try {
     await db.insert(users).values({
       fullName,
@@ -53,18 +60,29 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
     })
 
-    await signInWithCredentials({ email, password })
+    //automatically sign in the user
+    const signInResult = await signInWithCredentials({ email, password })
+
+    if (!signInResult.success) {
+      return {
+        success: false,
+        error: 'Registeration successful, but sign-in failed',
+      }
+    }
 
     return {
       success: true,
     }
   } catch (error) {
     console.error('🚀 - signUp - error:', error)
-    return { success: false, error: 'Signup error' }
+    return {
+      success: false,
+      error: 'Unexpected sign-up error occurred please try again',
+    }
   }
 }
 
-//function to logout 
+//function to logout
 export const logout = async () => {
   await signOut()
 }
@@ -74,15 +92,19 @@ export const getAccountDetails = async (
   userId: string
 ): Promise<UserAccountType> => {
   // 1. Get user details
-  const user = await db.select().from(users).where(eq(users.id, userId))
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1)
 
   // Ensure that the user is not null
-  if (user.length === 0) {
+  if (!user) {
     throw new Error('User not found')
   }
 
   // 2. Get all borrow records for the user (with book info)
-  const RawBorrowRecords = await db
+  const rawBorrowRecords = await db
     .select({
       borrowRecord: {
         id: borrowRecords.id,
@@ -114,43 +136,38 @@ export const getAccountDetails = async (
     .where(eq(borrowRecords.userId, userId))
     .orderBy(desc(borrowRecords.borrowDate)) // Important for picking latest return
 
-  // 3. Transform + filter records
+  // 3. Get the latest return for each book and filter out duplicates
   const seenReturnedBookIds = new Set<string>()
 
-  const filteredRecords = RawBorrowRecords.filter((record) => {
+  const filteredRecords = rawBorrowRecords.filter((record) => {
     const status = record.borrowRecord.status
-
-    if (status !== 'RETURNED') {
-      // Keep all non-returned records (BORROWED, OVERDUE etc.)
-      return true
-    }
-
     const bookId = record.borrowRecord.bookId
 
-    if (seenReturnedBookIds.has(bookId)) {
-      // We've already included the most recent return for this book
-      return false
-    }
+    // Keep all non-returned records (BORROWED, OVERDUE etc.)
+    if (status !== 'RETURNED') return true
 
-    // First time we see a return for this book
+    //if the record is returned and the book id is in the set, skip it
+    if (seenReturnedBookIds.has(bookId)) return false
+
+    // if it's the latest return for this book, include it to set
     seenReturnedBookIds.add(bookId)
     return true
   })
 
-  // 4.  Convert rating to → number
-  const TransformedRecords = filteredRecords.map((record) => ({
+  // 4.  Convert rating string to → number
+  const transformedRecords = filteredRecords.map((record) => ({
     ...record,
     book: record.book
       ? {
           ...record.book,
-          rating: parseFloat(record.book.rating as unknown as string),
+          // rating: parseFloat(record.book.rating as unknown as string),
+          rating: Number(record.book.rating ?? 0),
         }
       : undefined,
   }))
-
+  // 5. return user info and borrow records
   return {
-    ...user[0],
-    borrowRecords: TransformedRecords,
+    ...user,
+    borrowRecords: transformedRecords,
   }
 }
-

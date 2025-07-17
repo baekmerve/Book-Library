@@ -16,17 +16,17 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     if (!session?.user?.id) return
 
     //get user and see if the last activity is today
-    const user = await db
+    const [user] = await db
       .select()
       .from(users)
       .where(eq(users.id, session.user.id))
       .limit(1)
 
     // if user not found, do nothing
-    if (user.length === 0) return
+    if (!user) return
 
     // if the user's last activity date is today then don't update it
-    const lastActivity = user[0].lastActivityDate
+    const lastActivity = user.lastActivityDate
     const today = new Date().toISOString().slice(0, 10)
     if (lastActivity === today) return
 

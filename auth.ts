@@ -1,4 +1,3 @@
-
 export const runtime = 'nodejs'
 
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -32,26 +31,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null
         }
 
-        const user = await db
+        const [user] = await db
           .select()
           .from(users)
           .where(eq(users.email, credentials.email.toString()))
           .limit(1)
 
-        if (user.length === 0) {
-          return null
-        }
+        if (!user) return null
 
         const isPasswordValid = await compare(
           credentials.password.toString(),
-          user[0].password
+          user.password
         )
         if (!isPasswordValid) return null
 
         return {
-          id: user[0].id,
-          name: user[0].fullName,
-          email: user[0].email,
+          id: user.id,
+          name: user.fullName,
+          email: user.email,
         } as User
       },
     }),
